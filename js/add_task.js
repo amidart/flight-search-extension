@@ -30,6 +30,7 @@ var UserData = (function(){
     $('#add-leg').click(addLeg);
 
     $('.switch-type').click(function(){
+      $('.switch-type').removeClass('active');
       setView( this.id );
     });
 
@@ -46,6 +47,7 @@ var UserData = (function(){
   var setView = function( viewId ){
     view = viewId;
     $('body')[0].className = view;
+    $('#' + view).addClass('active');
     initLegs( view );
   };
 

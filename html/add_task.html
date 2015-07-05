@@ -8,81 +8,108 @@
 </head>
 <body>
 
-  <div class="container form-inline">
+  <div class="container">
 
-    <a href="#" id="oneway" class="btn btn-default btn-xs switch-type">one-way</a>
-    <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type">round-trip</a>
-    <a href="#" id="complex" class="btn btn-default btn-xs switch-type">complex</a>
+    <div class="row">
+      <div class="col-xs-12 btn-group" role="group">
+        <a href="#" id="oneway" class="btn btn-default btn-xs switch-type">one-way</a>
+        <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type">round-trip</a>
+        <a href="#" id="complex" class="btn btn-default btn-xs switch-type">complex</a>
+      </div>
+    </div>
 
-    <table>
-      <tr id="dates" class="">
-        <td>
-          <label>Start date</label>
-          <input type="text" id="startDate" class="form-control datepicker" placeholder="">
-        </td>
-        <td>
-          <label>End date</label>
-          <input type="text" id="endDate" class="form-control datepicker" placeholder="">
-        </td>
-      </tr>
 
-      <tr id="days" class="round-trip view-el view-roundtrip">
-        <td>
+    <div id="dates" class="row">
+      <div class="col-xs-3">
+        <label>Start date</label>
+        <input type="text" id="startDate" class="form-control datepicker" placeholder="">
+      </div>
+      <div class="col-xs-3">
+        <label>End date</label>
+        <input type="text" id="endDate" class="form-control datepicker" placeholder="">
+      </div>
+
+      <div id="days" class="col-xs-2 round-trip view-el view-roundtrip">
           <label>Days min</label>
           <input type="number" id="daysMin" class="form-control days" placeholder="">
-        </td>
-        <td>
+      </div>
+      <div class="col-xs-2 round-trip view-el view-roundtrip">
           <label>Days max</label>
           <input type="number" id="daysMax" class="form-control days" placeholder="">
-        </td>
-      </tr>
+      </div>
 
-    </table>
+    </div>
 
     <div class="legs-container">
       <div class="legs"></div>
-      <a href="#" id="add-leg" class="view-el view-complex">add</a>
+      <div class="row">
+        <div class="col-xs-1">
+          <a href="#" id="add-leg" class="btn btn-info btn-xs view-el view-complex">add</a>
+        </div>
+      </div>
     </div>
 
+
     <div class="prefs-container">
-      <form class="form-inline">
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-2">
+          <label>Adults</label>
           <input type="number" id="adults" class="form-control" value="1">
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-3">
+          <label>Class</label>
           <select class="form-control" id="flightClass">
             <option value="e" selected>econom</option>
             <option value="b">business</option>
           </select>
         </div>
-      </form>
+      </div>
     </div>
 
     <div class="text-center">
       <a href="#" id="generate" class="btn btn-default">Generate</a>
     </div>
 
-    <div class="result-container text-center">
-      <h3>Result</h3>
-      <textarea id="result" class="form-control" rows="10"></textarea>
-      <div>
-        <input type="number" id="targetPrice" class="form-control" placeholder="Target price">
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <h3>Result</h3>
+        <textarea id="result" class="form-control" rows="10"></textarea>
       </div>
     </div>
-
-    <div class="text-center">
-      <a href="#" id="enqueue" class="btn btn-lg btn-success">Enqueue tasks</a>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+          <input type="number" id="targetPrice" class="form-control" placeholder="Target price">
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <a href="#" id="enqueue" class="btn btn-lg btn-success">Enqueue tasks</a>
+      </div>
     </div>
 
   </div>
 
   <script type="text/template" id="leg-template">
-    <form class="form-inline leg">
+    <form class="leg row">
       <div class="form-group">
-        <input type="text" class="form-control iata-from" placeholder="From (Airport code)">
-        <input type="text" class="form-control iata-to" placeholder="To (Airport code)">
-        <input type="number" class="form-control days days-min view-el view-complex" min="1" placeholder="Days min">
-        <input type="number" class="form-control days days-max view-el view-complex" min="1" placeholder="Days max">
+        <div class="col-xs-3">
+          <label>From (airport code)</label>
+          <input type="text" class="form-control iata-from">
+        </div>
+        <div class="col-xs-3">
+          <label>To (airport code)</label>
+          <input type="text" class="form-control col-xs-3 iata-to">
+        </div>
+        <div class="col-xs-2 view-el view-complex days">
+          <label>Days min</label>
+          <input type="number" class="form-control days-min" min="1">
+        </div>
+        <div class="col-xs-2 view-el view-complex days">
+          <label>Days max</label>
+          <input type="number" class="form-control days-max" min="1">
+        </div>
       </div>
     </form>
   </script>

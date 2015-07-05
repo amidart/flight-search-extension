@@ -1,5 +1,12 @@
+body {
+  font-size: 12px;
+}
 .container {
   width: 600px;
+}
+
+.row {
+  margin-top: 10px;
 }
 
 .view-el {
@@ -20,24 +27,6 @@
 
 .legs form:last-child .days {
   display: none !important;
-}
-
-
-input[type=number] {
-  width: 75px !important;
-}
-
-tr {
-  margin: 2px 0;
-}
-
-td {
-  padding: 2px 0;
-}
-
-td label {
-  //text-align: center;
-  width: 75px;
 }
 
 #result {
