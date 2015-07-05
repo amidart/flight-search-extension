@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="/lib/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/popup.css">
+</head>
+<body>
+
+
+  <div class="container">
+
+    <div class="text-center">
+      <div class="state">State: running</div>
+      <div>
+        <a href="#" id="start" class="btn btn-default">Pause</a>
+      </div>
+      <div>
+        <a href="#" id="reset" class="btn btn-default">Stop and Clear</a>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="text-center">
+      <a href="/html/add_task.html" target="_blank" id="btn-add" class="btn btn-success">Add Task</a>
+      <a href="/html/log.html" target="_blank" id="btn-log" class="btn btn-info">Show log</a>
+    </div>
+
+
+  </div>
+  <!-- ############ SCRIPTS ########### -->
+  <script type="text/javascript" src="/lib/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/lib/mustache-0.8.1.min.js"></script>
+  <script type="text/javascript" src="/js/popup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+.container {
+  width: 600px;
+}
+
+.view-el {
+  display: none !important;
+}
+
+.oneway .view-oneway {
+  display: inline-block !important;
+}
+
+.roundtrip .view-roundtrip {
+  display: table-row !important;
+}
+
+.complex .view-complex {
+  display: inline-block !important;
+}
+
+.legs form:last-child .days {
+  display: none !important;
+}
+
+
+input[type=number] {
+  width: 75px !important;
+}
+
+tr {
+  margin: 2px 0;
+}
+
+td {
+  padding: 2px 0;
+}
+
+td label {
+  //text-align: center;
+  width: 75px;
+}
+
+#result {
+  width: 100%;
+}
