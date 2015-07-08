@@ -5,7 +5,7 @@ var App = (function(){
     Task.init();
     TaskManager.init( console.log.bind(console) );
     Log.init( 1000 );
-    TaskManager.run();
+    TaskManager.start();
   };
 
 
@@ -13,9 +13,19 @@ var App = (function(){
     chrome.runtime.onMessage.addListener(
       function(request, sender, sendResponse) {
         console.log(request);
+        var cmd = request.cmd;
         var data = request.data;
-        if (request.cmd === 'enqueueTasks') {
+        if (cmd === 'enqueueTasks') {
           enqueueTasks( data );
+        }
+        else if (cmd === 'run') {
+          TaskManager.run();
+        }
+        else if (cmd === 'stop') {
+          TaskManager.stop();
+        }
+        else if (cmd === 'pause') {
+          TaskManager.pause();
         }
     });
   };
@@ -24,6 +34,7 @@ var App = (function(){
   var enqueueTasks = function( data ){
     for (var i = 0, len = data.tasks.length; i < len; i++) {
       var url = data.tasks[i];
+      if (!url) continue;
       Task.push({
         url: url,
         price: data.price

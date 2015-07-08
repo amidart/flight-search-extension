@@ -12,7 +12,7 @@ var TaskManager = (function(){
 
 
   var init = function( cbOnError ){
-    if (typeof onError === 'function') onError = cbOnError;
+    if (typeof cbOnError === 'function') onError = cbOnError;
     restore();
   };
 
@@ -41,11 +41,22 @@ var TaskManager = (function(){
   };
 
 
-  var run = function(){
+  var getState = function(){
+    return state;
+  };
+
+
+  var start = function(){
     state = 'running';
     for (var i = 0; i < tabs; i++) {
       enqueueTask( i*interval*1000 );
     }
+  };
+
+
+  var run = function(){
+    if (state === 'paused') unpause();
+    else if (state === 'stopped') start();
   };
 
 
@@ -65,6 +76,9 @@ var TaskManager = (function(){
       var task = Task.get();
       console.log(task);
       if (!task) {
+        setTimeout(function(){
+          runTask();
+        }, interval*1000);
         if (typeof onError === 'function') onError('Tasks list is empty');
         return;
       }
@@ -95,6 +109,12 @@ var TaskManager = (function(){
     for (var i = 0, len = timers.length; i < len; i++) {
       deleteTimer(timers[i]);
     }
+  };
+
+
+  var reset = function(){
+    stop();
+    Task.clearAll();
   };
 
 
@@ -143,10 +163,13 @@ var TaskManager = (function(){
   return {
     init: init,
     configure: configure,
+    getState: getState,
+    start: start,
     run: run,
     pause: pause,
     unpause: unpause,
     stop: stop,
+    reset: reset,
     processResult: processResult
   };
 

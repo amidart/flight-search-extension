@@ -36,9 +36,18 @@ var Task = (function(){
   };
 
 
+  var getStatus = function(){
+    return {
+      current: currentIndex ? currentIndex+1 : 0,
+      count: queue.length
+    };
+  };
+
+
   var clearAll = function(){
     queue = [];
     currentIndex = 0;
+    save();
   };
 
 
@@ -50,7 +59,7 @@ var Task = (function(){
 
   var restore = function(){
     queue = JSON.parse(localStorage.tasks || '[]');
-    currentIndex = localStorage.currentIndex || 0;
+    currentIndex = parseInt( localStorage.currentIndex ) || 0;
   };
 
 
@@ -59,6 +68,7 @@ var Task = (function(){
     push: push,
     pushMultiple: pushMultiple,
     get: get,
+    getStatus: getStatus,
     clearAll: clearAll
   };
 

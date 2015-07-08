@@ -1,8 +1,37 @@
 body {
   width: 250px;
   padding: 10px;
+  font-size: 16px;
 }
 
 .btn {
   margin: 5px 0;
+}
+
+hr {
+  margin: 5px;
+}
+
+#controls {
+  margin-top: 5px;
+}
+
+.next {
+  font-size: 11px;
+}
+
+.running #btn-start {
+  display: none;
+}
+
+.paused #btn-pause {
+  display: none;
+}
+
+.stopped #btn-stop {
+  display: none;
+}
+
+.stopped #btn-pause {
+  display: none;
 }
