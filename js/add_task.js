@@ -41,6 +41,11 @@ var UserData = (function(){
     $('#generate').click(function(){
       generateTasks();
     });
+
+    $('#enqueue-btn').click(function(){
+      var price = parseInt( $('#targetPrice').val() );
+      enqueueTasks( $('#result').val().split('\n'), price );
+    });
   };
 
 
@@ -106,6 +111,17 @@ var UserData = (function(){
     res.legs = legs;
     console.log(res);
     return res;
+  };
+
+
+  var enqueueTasks = function( tasks, price ){
+    chrome.runtime.sendMessage({
+      cmd: 'enqueueTasks',
+      data: {
+        tasks: tasks,
+        price: price
+      }
+    });
   };
 
 
@@ -195,8 +211,8 @@ var Buruki = (function(){
   // complex:
   // MOW-BKK/2015-07-18/BKK-SGN/2015-07-21/SGN-HKG/2015-07-24/HKG-MOW/2015-07-31/3/2/1/b/
 
-  var onewayTemplate = '{{from}}/{{to}}/{{date}}/-/{{adults}}/0/0/{{class}}';
-  var roundtripTemplate = '{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/0/0/{{class}}';
+  var onewayTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{date}}/-/{{adults}}/0/0/{{class}}';
+  var roundtripTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/0/0/{{class}}';
 
   var oneway = function( data ){
      return Mustache.to_html( onewayTemplate, data );

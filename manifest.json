@@ -16,6 +16,9 @@
   "background": {
     "scripts": [
       "/lib/jquery-2.1.1.min.js",
+      "/js/Task.js",
+      "/js/TaskManager.js",
+      "/js/Log.js",
       "/js/background.js"
     ]
   },
