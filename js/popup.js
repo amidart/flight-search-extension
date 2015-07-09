@@ -1,15 +1,29 @@
 (function(){
 
   var bg = chrome.extension.getBackgroundPage();
-
+  var status = null;
 
   var init = function(){
+    restoreSettings();
     initUI();
     updateState();
   };
 
 
+  var restoreSettings = function(){
+    var config = bg.TaskManager.getConfig();
+    $('#tabs').val( config.tabs );
+    $('#interval').val( config.interval );
+  };
+
+
   var initUI = function(){
+
+    status = new Helpers.Status( $('#status'), {
+      show: {method: 'show', params: []},
+      hide: {method: 'hide', params: []}
+    } );
+
     $('#controls .btn').click(function(){
       var method = this.dataset.method;
       if (method && bg.TaskManager[method]) bg.TaskManager[method]();
@@ -19,6 +33,17 @@
     $('#btn-reset').click(function(){
       bg.TaskManager.reset();
       updateState();
+      status.success('Cleared', 1000);
+    });
+
+    $('#btn-save').click(function(){
+      var tabs = parseInt( $('#tabs').val() );
+      var interval = parseInt( $('#interval').val() );
+      bg.TaskManager.configure({
+        tabs: tabs,
+        interval: interval
+      });
+      status.success('Saved', 1000);
     });
   };
 

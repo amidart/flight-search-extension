@@ -5,7 +5,7 @@ var App = (function(){
     Task.init();
     TaskManager.init( console.log.bind(console) );
     Log.init( 1000 );
-    TaskManager.start();
+    //TaskManager.start();
   };
 
 
@@ -18,16 +18,7 @@ var App = (function(){
         if (cmd === 'enqueueTasks') {
           enqueueTasks( data );
         }
-        else if (cmd === 'run') {
-          TaskManager.run();
-        }
-        else if (cmd === 'stop') {
-          TaskManager.stop();
-        }
-        else if (cmd === 'pause') {
-          TaskManager.pause();
-        }
-    });
+      });
   };
 
 

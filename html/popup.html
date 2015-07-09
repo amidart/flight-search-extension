@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<div id="status" class="text-center"></div>
 
   <div class="container">
 
@@ -14,33 +15,43 @@
       <div id="state">
         State: <span>running</span>
       </div>
-      <div class="settings">
 
-      </div>
       <div id="controls">
-        <a href="#" id="btn-start" data-method="start" class="btn btn-default btn-xs">Run</a>
-        <a href="#" id="btn-pause" data-method="pause" class="btn btn-default btn-xs">Pause</a>
-        <a href="#" id="btn-stop" data-method="stop" class="btn btn-default btn-xs">Stop</a>
+        <a href="#" id="btn-start" data-method="start" class="btn btn-default  btn-success">Run</a>
+        <a href="#" id="btn-pause" data-method="pause" class="btn btn-default ">Pause</a>
+        <a href="#" id="btn-stop" data-method="stop" class="btn btn-default ">Stop</a>
       </div>
     </div>
 
     <hr/>
 
-    <div class="text-center">
-      <a href="/html/add_task.html" target="_blank" id="btn-add" class="btn btn-default btn-xs">Add Task</a>
-      <a href="/html/log.html" target="_blank" id="btn-log" class="btn btn-default btn-xs">Show log</a>
+    <div id="settings" class="text-center">
+      <h4>Settings</h4>
+      <label>Tabs: </label>
+      <input type="number" id="tabs" class="form-control input-sm" min="1">
+      <label>Interval: </label>
+      <input type="number" id="interval" class="form-control input-sm" min="0">
+      <a href="#" id="btn-save" class="btn btn-default btn-sm">save</a>
     </div>
 
     <hr/>
 
     <div class="text-center">
-      <a href="#" id="btn-reset" class="btn btn-default btn-xs">Clear All Tasks</a>
+      <a href="/html/add_task.html" target="_blank" id="btn-add" class="btn btn-default btn-info">Add Task</a>
+      <a href="/html/log.html" target="_blank" id="btn-log" class="btn btn-default btn-info">Show log</a>
+    </div>
+
+    <hr/>
+
+    <div class="text-center">
+      <a href="#" id="btn-reset" class="btn btn-default btn-sm btn-danger">Clear All Tasks</a>
     </div>
 
   </div>
   <!-- ############ SCRIPTS ########### -->
   <script type="text/javascript" src="/lib/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="/lib/mustache-0.8.1.min.js"></script>
+  <script type="text/javascript" src="/js/Status.js"></script>
   <script type="text/javascript" src="/js/popup.js"></script>
 
 </body>

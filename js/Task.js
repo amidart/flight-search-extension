@@ -38,7 +38,7 @@ var Task = (function(){
 
   var getStatus = function(){
     return {
-      current: currentIndex ? currentIndex+1 : 0,
+      current: queue.length ? currentIndex+1 : 0,
       count: queue.length
     };
   };
@@ -63,12 +63,18 @@ var Task = (function(){
   };
 
 
+  var resetIndex = function(){
+    currentIndex = 0;
+  };
+
+
   return {
     init: init,
     push: push,
     pushMultiple: pushMultiple,
     get: get,
     getStatus: getStatus,
+    resetIndex: resetIndex,
     clearAll: clearAll
   };
 

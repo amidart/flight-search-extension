@@ -46,17 +46,20 @@ var TaskManager = (function(){
   };
 
 
+  var getConfig = function(){
+    return {
+      tabs: tabs,
+      interval: interval,
+      timeout: timeout
+    };
+  };
+
+
   var start = function(){
     state = 'running';
     for (var i = 0; i < tabs; i++) {
       enqueueTask( i*interval*1000 );
     }
-  };
-
-
-  var run = function(){
-    if (state === 'paused') unpause();
-    else if (state === 'stopped') start();
   };
 
 
@@ -106,6 +109,7 @@ var TaskManager = (function(){
 
   var stop = function(){
     state = 'stopped';
+    Task.resetIndex();
     for (var i = 0, len = timers.length; i < len; i++) {
       deleteTimer(timers[i]);
     }
@@ -164,8 +168,8 @@ var TaskManager = (function(){
     init: init,
     configure: configure,
     getState: getState,
+    getConfig: getConfig,
     start: start,
-    run: run,
     pause: pause,
     unpause: unpause,
     stop: stop,

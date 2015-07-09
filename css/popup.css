@@ -1,5 +1,5 @@
 body {
-  width: 250px;
+  width: 350px;
   padding: 10px;
   font-size: 16px;
 }
@@ -12,12 +12,52 @@ hr {
   margin: 5px;
 }
 
-#controls {
-  margin-top: 5px;
+/**
+ * Status
+ */
+
+#status {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+#state {
+  padding: 5px;
 }
 
 .next {
   font-size: 11px;
+}
+
+
+/**
+ * Settings
+ */
+
+#settings input {
+  width: 70px;
+}
+
+#settings input {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#settings label {
+  font-size: 12px;
+}
+
+#settings #save {
+  //margin-left: 10px;
+}
+/**
+ *
+ */
+
+#controls {
+  margin-top: 5px;
 }
 
 .running #btn-start {
