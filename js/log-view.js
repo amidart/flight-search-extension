@@ -44,6 +44,7 @@
       html += Mustache.to_html( $('#recordTemplate').html(), data );
     }
     $('#log tbody').html(html);
+    $('#log').stupidtable();
   };
 
 

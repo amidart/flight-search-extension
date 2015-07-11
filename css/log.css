@@ -23,12 +23,12 @@ table {
   width: 100%;
 }
 
-thead td {
+thead th {
   font-weight: bold;
   background: #eee;
 }
 
-td {
+td, th {
   text-align: center;
   border: solid 1px #ccc;
   padding: 2px;
@@ -46,6 +46,24 @@ td.extra {
   width: 220px;
   text-align: left;
 }
+
+th[data-sort] {
+  cursor: pointer;
+  background-image: url(/img/sort.png);
+  background-position: -10px -28px;
+  background-repeat: no-repeat;
+}
+
+
+th.sorting-asc {
+  background-image: url(/img/sort.png);
+  background-position: -10px 0px;
+}
+th.sorting-desc {
+  background-image: url(/img/sort.png);
+  background-position: -10px -56px;
+}
+
 
 .wrap-extra {
   height: 16px;
