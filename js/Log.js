@@ -11,7 +11,6 @@ var Log = (function(){
 
 
   var add = function( data ){
-    //console.log(data);
     var item = {
       timestamp: Date.now(),
       data: data

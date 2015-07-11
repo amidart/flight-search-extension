@@ -142,8 +142,8 @@ var TaskManager = (function(){
       if (activeTabs[tabId]) {
         Log.add({
           error: 'no response',
-          url: task.url,
-          targetPrice: task.price,
+          url: task.data.url,
+          targetPrice: task.data.price,
         });
         enqueueTask( interval*1000 );
         delete activeTabs[tabId];

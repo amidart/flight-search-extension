@@ -1,0 +1,10 @@
+body {
+  font-size: 12px;
+}
+.container {
+  width: 800px;
+}
+
+td {
+  padding: 0 2px;
+}

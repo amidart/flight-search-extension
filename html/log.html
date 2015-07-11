@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="/lib/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/log.css">
+</head>
+<body>
+
+  <div id="status" class="text-center"></div>
+
+  <div class="container">
+    <h1>Log</h1>
+    <table id="log"></table>
+  </div>
+
+
+  <script type="text/template" id="recordTemplate">
+    <tr>
+      <td>
+        {{time}}
+      </td>
+      <td>
+        {{url}}
+      </td>
+      <td>
+        {{targetPrice}}
+      </td>
+      <td>
+        {{result}}
+      </td>
+    </tr>
+  </script>
+
+  <!-- ############ SCRIPTS ########### -->
+  <script type="text/javascript" src="/lib/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/lib/mustache-0.8.1.min.js"></script>
+  <script type="text/javascript" src="/lib/moment.min.js"></script>
+  <script type="text/javascript" src="/js/Status.js"></script>
+  <script type="text/javascript" src="/js/Log.js"></script>
+  <script type="text/javascript" src="/js/log-view.js"></script>
+
+</body>
+</html>
