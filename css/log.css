@@ -1,10 +1,49 @@
 body {
   font-size: 12px;
+  line-height: 16px;
 }
 .container {
-  width: 800px;
+  //width: 800px;
+}
+
+
+/**
+ * Table
+ */
+
+table {
+  width: 100%;
+}
+
+thead td {
+  font-weight: bold;
+  background: #eee;
+}
+
+tr.success {
+  background:
 }
 
 td {
-  padding: 0 2px;
+  text-align: center;
+  border: solid 1px #ccc;
+  padding: 2px;
+}
+
+td.time {
+  width: 130px;
+}
+
+td.price {
+  text-align: center;
+}
+
+td.extra {
+  width: 220px;
+  text-align: left;
+}
+
+.wrap-extra {
+  height: 16px;
+  overflow: hidden;
 }

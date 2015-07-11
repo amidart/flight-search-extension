@@ -18,6 +18,9 @@ var App = (function(){
         if (cmd === 'enqueueTasks') {
           enqueueTasks( data );
         }
+        else if (cmd === 'flights') {
+          TaskManager.processResult( sender.tab.id, data );
+        }
         else if (cmd === 'Log.getRecent') {
           var records = Log.getRecent( data.count );
           if (typeof sendResponse === 'function') sendResponse( records );

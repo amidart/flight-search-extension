@@ -11,23 +11,37 @@
 
   <div class="container">
     <h1>Log</h1>
-    <table id="log"></table>
+    <table id="log">
+      <thead>
+        <tr>
+          <td>Checking time</td>
+          <td>Url</td>
+          <td>Target Price</td>
+          <td>Actual Price</td>
+          <td>Information</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
 
 
   <script type="text/template" id="recordTemplate">
-    <tr>
-      <td>
+    <tr class="{{rowClassName}}">
+      <td class="time">
         {{time}}
       </td>
-      <td>
-        {{url}}
+      <td class="url">
+        <a href="{{url}}" target="_blank">{{url}}</a>
       </td>
-      <td>
+      <td class="price target-price">
         {{targetPrice}}
       </td>
-      <td>
+      <td class="price actual-price">
         {{result}}
+      </td>
+      <td class="extra" data-extra="{{extra}}">
+        {{{extra}}}
       </td>
     </tr>
   </script>

@@ -32,6 +32,7 @@
 
     $('#btn-reset').click(function(){
       bg.TaskManager.reset();
+      bg.Log.clear();
       updateState();
       status.success('Cleared', 1000);
     });

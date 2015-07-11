@@ -32,6 +32,12 @@ var Log = (function(){
   };
 
 
+  var clear = function(){
+    delete localStorage.log;
+    records = [];
+  };
+
+
   var getRecent = function( n ){
     var res = [];
     var len = records.length;
@@ -49,6 +55,7 @@ var Log = (function(){
     init: init,
     add: add,
     restore: restore,
+    clear: clear,
     getRecent: getRecent
   };
 

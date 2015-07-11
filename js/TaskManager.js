@@ -122,13 +122,25 @@ var TaskManager = (function(){
   };
 
 
-  var processResult = function( tabId, result ){
+  var processResult = function( tabId, flights ){
+    var result = flights[0];
+    if (!result) return;
     if (activeTabs[tabId]) {
       var task = activeTabs[tabId];
+      var success = false;
+      var targetPrice = task.data.price;
+      var actualPrice = result.price;
+      console.log(actualPrice, targetPrice);
+      if (actualPrice <= targetPrice) {
+        //Notifier.notify();
+        success = true;
+      }
       Log.add({
-        url: task.url,
-        targetPrice: task.price,
-        price: result.price
+        success: success,
+        url: task.data.url,
+        targetPrice: targetPrice,
+        price: actualPrice,
+        extra: flights
       });
       enqueueTask( interval*1000 );
       delete activeTabs[tabId];
