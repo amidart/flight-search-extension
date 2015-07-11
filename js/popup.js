@@ -32,9 +32,13 @@
 
     $('#btn-reset').click(function(){
       bg.TaskManager.reset();
-      bg.Log.clear();
       updateState();
-      status.success('Cleared', 1000);
+      status.success('Tasks list was cleared', 1000);
+    });
+
+    $('#btn-clear-log').click(function(){
+      bg.Log.clear();
+      status.success('Log was cleared', 1000);
     });
 
     $('#btn-save').click(function(){
