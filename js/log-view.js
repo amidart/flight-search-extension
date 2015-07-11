@@ -1,11 +1,25 @@
 (function(){
 
   var init = function(){
+    initUI();
     chrome.runtime.sendMessage({
         cmd: 'Log.getRecent',
         data:{count: 1000}
       }, function( records ){
         loadLog( records );
+    });
+  };
+
+
+  var initUI = function(){
+    $('#btn-success-only').click(function(){
+      $('body')[0].className = 'success-only';
+    });
+    $('#btn-failed-only').click(function(){
+      $('body')[0].className = 'failed-only';
+    });
+    $('#btn-show-all').click(function(){
+      $('body')[0].className = '';
     });
   };
 
