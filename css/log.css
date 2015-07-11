@@ -1,6 +1,7 @@
 body {
   font-size: 12px;
   line-height: 16px;
+  padding-bottom: 100px;
 }
 .container {
   //width: 800px;
@@ -31,7 +32,7 @@ thead th {
 td, th {
   text-align: center;
   border: solid 1px #ccc;
-  padding: 2px;
+  padding: 2px 5px;
 }
 
 td.time {
@@ -43,30 +44,31 @@ td.price {
 }
 
 td.extra {
-  width: 220px;
+  width: 330px;
   text-align: left;
 }
 
 th[data-sort] {
   cursor: pointer;
   background-image: url(/img/sort.png);
-  background-position: -10px -28px;
+  background-position: -12px -28px;
   background-repeat: no-repeat;
 }
 
 
 th.sorting-asc {
   background-image: url(/img/sort.png);
-  background-position: -10px 0px;
+  background-position: -12px 0px;
 }
 th.sorting-desc {
   background-image: url(/img/sort.png);
-  background-position: -10px -56px;
+  background-position: -12px -56px;
 }
 
 
-.wrap-extra {
+td .wrap-extra {
   height: 16px;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 

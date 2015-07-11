@@ -45,13 +45,14 @@
     }
     $('#log tbody').html(html);
     $('#log').stupidtable();
+    $('[data-toggle="tooltip"]').tooltip();
   };
 
 
   var renderExtra = function( flights ){
     var res = '';
     if (!flights) return res;
-    var template = '<div>{{provider}} {{depTime}} {{depAirport}} {{flightTime}} {{price}}</div>';
+    var template = '<div>{{provider}} {{depTime}} {{depAirport}} {{flightTime}} - {{price}}</div>';
     for (var i = 0, len = flights.length; i < len; i++) {
       var flight = flights[i];
       res += Mustache.to_html(template, flight);
