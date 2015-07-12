@@ -23,7 +23,7 @@ var UserData = (function(){
 
   var init = function(){
     initUI();
-    setView('roundtrip');
+    setView('complex');
   };
 
 
@@ -207,7 +207,7 @@ var Generator = (function(){
           from: data.legs[0].from,
           to: data.legs[0].to,
           dateOut: start.yyyymmdd(),
-          dateBack: getDate( start, i),
+          dateBack: getDate( start, i).yyyymmdd(),
           adults: data.adults,
           class: data.class
         });
@@ -219,16 +219,105 @@ var Generator = (function(){
   };
 
 
+  var complex = function( data ){
+    var start = new Date( data.startDate );
+    var end = new Date( data.endDate );
+    var res = [];
+    var ranges = getRanges( data.legs );
+    var daysComb = cartesian.apply( null, ranges );
+    console.log(daysComb);
+    var filteredComb = filterDaysCombinations( start, end, daysComb );
+    console.log('Filtered');
+    console.log(filteredComb);
+    for (var i = 0, len = filteredComb.length; i < len; i++) {
+      var combination = filteredComb[i];
+    }
+    // while(start <= end) {
+    //   console.log(start.yyyymmdd());
+    //   var newDate = start.setDate(start.getDate() + 1);
+    //   start = new Date(newDate);
+    // }
+    return res;
+  };
+
+
+  var getRanges = function( legs ){
+    var ranges = [];
+    for (var i = 0, len = legs.length - 1; i < len; i++) {
+      var leg = legs[i];
+      if (!leg.daysMin || !leg.daysMax) throw('Bad range');
+      ranges.push( range( leg.daysMin, leg.daysMax) );
+    }
+    return ranges;
+  };
+
+
+  var range = function( start, end ){
+    var list = [];
+    for (var i = start; i <= end; i++) {
+      list.push(i);
+    }
+    return list;
+  };
+
+
+  /**
+   * Generating combinations from n arrays with m elements
+   * http://stackoverflow.com/questions/15298912/javascript-generating-combinations-from-n-arrays-with-m-elements
+   * Usage: cartesian([0,1], [0,1,2,3], [0,1,2]);
+   */
+  function cartesian() {
+    var r = [], arg = arguments, max = arg.length-1;
+    function helper(arr, i) {
+      for (var j=0, l=arg[i].length; j<l; j++) {
+        var a = arr.slice(0); // clone arr
+        a.push(arg[i][j]);
+        if (i==max)
+          r.push(a);
+        else
+          helper(a, i+1);
+      }
+    }
+    helper([], 0);
+    return r;
+  }
+
+
+  /**
+   * Calculates duration for each days combination from combinations list
+   * and compares that value with duration provided by user (end - start)
+   * Result is filtered array of combinations
+   * @param  {Date} start
+   * @param  {Date} end
+   * @param  {array of arrays} combinations
+   * @return {array of arrays}
+   */
+  var filterDaysCombinations = function( start, end, combinations ){
+    var res = combinations.filter(function( combination, index ){
+      console.log(combination);
+      var sum = combination.reduce(function(previousValue, currentValue) {
+        return previousValue + currentValue;
+      }, 0);
+      var actualEndDate = getDate( start, sum);
+      console.log( start.toLocaleDateString(), end.toLocaleDateString(), actualEndDate.toLocaleDateString());
+      if (actualEndDate > end) return false;
+      return true;
+    });
+    return res;
+  };
+
+
   var getDate = function( start, days ){
     var tmpDate = new Date( start.getTime() );
     var newDate = tmpDate.setDate( tmpDate.getDate() + days );
-    return (new Date(newDate)).yyyymmdd();
+    return (new Date(newDate));
   };
 
 
   return {
     oneway: oneway,
-    roundtrip: roundtrip
+    roundtrip: roundtrip,
+    complex: complex
   };
 
 })();
@@ -255,9 +344,18 @@ var Buruki = (function(){
     return Mustache.to_html( roundtripTemplate, data );
   };
 
+  var complex = function( data ){
+    for (var i = 0, len = data.legs.length; i < len; i++) {
+      var leg = data.legs[i];
+      console.log(leg);
+    }
+  };
+
+
   return {
     oneway: oneway,
-    roundtrip: roundtrip
+    roundtrip: roundtrip,
+    complex: complex
   };
 
 })();
