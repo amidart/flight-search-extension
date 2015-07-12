@@ -53,6 +53,7 @@ var UserData = (function(){
       var price = parseInt( $('#targetPrice').val() );
       validateResults(
         function(){
+          console.log('enqueue');
           enqueueTasks( $('#result').val().split('\n'), price );
         },
         function( error ){
@@ -99,6 +100,7 @@ var UserData = (function(){
       html += Buruki[data.type]( result ) + '\n';
     }
     $('#result').html( html );
+    $('#result-count').html( ' (' + results.length + ')' );
   };
 
 
@@ -140,11 +142,14 @@ var UserData = (function(){
     if (errors.length) {
       var errorStr = errors.join('</p><p>');
       onError( '<p>' + errorStr + '</p>');
+      return;
     }
+    onSuccess();
   };
 
 
   var enqueueTasks = function( tasks, price ){
+    console.log(tasks);
     chrome.runtime.sendMessage({
       cmd: 'enqueueTasks',
       data: {
@@ -225,18 +230,20 @@ var Generator = (function(){
     var res = [];
     var ranges = getRanges( data.legs );
     var daysComb = cartesian.apply( null, ranges );
-    console.log(daysComb);
-    var filteredComb = filterDaysCombinations( start, end, daysComb );
-    console.log('Filtered');
-    console.log(filteredComb);
-    for (var i = 0, len = filteredComb.length; i < len; i++) {
-      var combination = filteredComb[i];
+    while(start <= end) {
+      console.log(start.yyyymmdd());
+      for (var i = 0, len = daysComb.length; i < len; i++) {
+        var combination = daysComb[i];
+        var legs = generateLegs( data.legs, start, combination);
+        res.push({
+          legs: legs,
+          adults: data.adults,
+          class: data.class
+        });
+      }
+      var newDate = start.setDate(start.getDate() + 1);
+      start = new Date(newDate);
     }
-    // while(start <= end) {
-    //   console.log(start.yyyymmdd());
-    //   var newDate = start.setDate(start.getDate() + 1);
-    //   start = new Date(newDate);
-    // }
     return res;
   };
 
@@ -283,26 +290,25 @@ var Generator = (function(){
   }
 
 
-  /**
-   * Calculates duration for each days combination from combinations list
-   * and compares that value with duration provided by user (end - start)
-   * Result is filtered array of combinations
-   * @param  {Date} start
-   * @param  {Date} end
-   * @param  {array of arrays} combinations
-   * @return {array of arrays}
-   */
-  var filterDaysCombinations = function( start, end, combinations ){
-    var res = combinations.filter(function( combination, index ){
-      console.log(combination);
-      var sum = combination.reduce(function(previousValue, currentValue) {
-        return previousValue + currentValue;
-      }, 0);
-      var actualEndDate = getDate( start, sum);
-      console.log( start.toLocaleDateString(), end.toLocaleDateString(), actualEndDate.toLocaleDateString());
-      if (actualEndDate > end) return false;
-      return true;
-    });
+  var generateLegs = function( legs, start, arrIntervals ){
+    console.log(legs, arrIntervals);
+    var date = start;
+    var res = [{
+      from: legs[0].from,
+      to: legs[0].to,
+      date: start.yyyymmdd()
+    }];
+    for (var i = 1, len = legs.length; i < len; i++) {
+      var leg = legs[i];
+      days = arrIntervals[i-1];
+      date = getDate(date, days);
+      res.push({
+        from: leg.from,
+        to: leg.to,
+        date: date.yyyymmdd()
+      });
+    }
+    console.log(res);
     return res;
   };
 
@@ -335,6 +341,7 @@ var Buruki = (function(){
 
   var onewayTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{date}}/-/{{adults}}/0/0/{{class}}';
   var roundtripTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/0/0/{{class}}';
+  var complexTemplate = 'http://buruki.ru/complex/';
 
   var oneway = function( data ){
      return Mustache.to_html( onewayTemplate, data );
@@ -345,10 +352,13 @@ var Buruki = (function(){
   };
 
   var complex = function( data ){
+    var res = complexTemplate;
     for (var i = 0, len = data.legs.length; i < len; i++) {
       var leg = data.legs[i];
-      console.log(leg);
+      res += leg.from + '-' + leg.to + '/' + leg.date + '/';
     }
+    res += data.adults + '/0/0/' + data.class;
+    return res;
   };
 
 
