@@ -61,6 +61,7 @@ var TaskManager = (function(){
     for (var i = 0; i < tabs; i++) {
       enqueueTask( i*interval*1000 );
     }
+    save();
   };
 
 
@@ -112,6 +113,7 @@ var TaskManager = (function(){
     for (var i = 0, len = timers.length; i < len; i++) {
       deleteTimer(timers[i]);
     }
+    save();
   };
 
 
