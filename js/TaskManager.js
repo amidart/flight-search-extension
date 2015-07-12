@@ -79,6 +79,10 @@ var TaskManager = (function(){
       var task = Task.get();
       console.log(task);
       if (!task) {
+        if ( !Task.hasLoopSetting() ) {
+          pause();
+          return;
+        }
         setTimeout(function(){
           runTask();
         }, interval*1000);

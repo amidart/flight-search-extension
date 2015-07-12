@@ -2,6 +2,7 @@ var Task = (function(){
 
   var queue = [];
   var currentIndex = 0;
+  var loop = false;
 
 
   var init = function(){
@@ -28,8 +29,11 @@ var Task = (function(){
 
   var get = function(){
     if (!queue.length) return undefined;
+    if( currentIndex == queue.length) {
+      if (!loop) return undefined;
+      else currentIndex = 0;
+    }
     var task = queue[ currentIndex++ ];
-    if (currentIndex === queue.length) currentIndex = 0;
     task.state = 'in_progress';
     save();
     return task;
@@ -54,17 +58,30 @@ var Task = (function(){
   var save = function(){
     localStorage.tasks = JSON.stringify(queue);
     localStorage.currentIndex = currentIndex;
+    localStorage.loop = loop;
   };
 
 
   var restore = function(){
     queue = JSON.parse(localStorage.tasks || '[]');
     currentIndex = parseInt( localStorage.currentIndex ) || 0;
+    loop = localStorage.loop === 'true';
   };
 
 
   var resetIndex = function(){
     currentIndex = 0;
+  };
+
+
+  var setLoopSetting = function( value ){
+    loop = value;
+    save();
+  };
+
+
+  var hasLoopSetting = function(){
+    return loop;
   };
 
 
@@ -75,6 +92,8 @@ var Task = (function(){
     get: get,
     getStatus: getStatus,
     resetIndex: resetIndex,
+    setLoopSetting: setLoopSetting,
+    hasLoopSetting: hasLoopSetting,
     clearAll: clearAll
   };
 

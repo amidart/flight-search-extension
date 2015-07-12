@@ -36,6 +36,12 @@ hr {
  * Settings
  */
 
+#loop-label {
+  font-size: 14px;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
 #settings input {
   width: 70px;
 }

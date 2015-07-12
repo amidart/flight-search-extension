@@ -14,6 +14,7 @@
     var config = bg.TaskManager.getConfig();
     $('#tabs').val( config.tabs );
     $('#interval').val( config.interval );
+    $('#loop').prop('checked', bg.Task.hasLoopSetting() );
   };
 
 
@@ -41,6 +42,10 @@
       status.success('Log was cleared', 1000);
     });
 
+    $('#loop').change(function(){
+      bg.Task.setLoopSetting( this.checked );
+    });
+
     $('#btn-save').click(function(){
       var tabs = parseInt( $('#tabs').val() );
       var interval = parseInt( $('#interval').val() );
@@ -49,6 +54,7 @@
         interval: interval
       });
       status.success('Saved', 1000);
+      bg.TaskManager.start();
     });
   };
 
@@ -57,7 +63,8 @@
     var state = bg.TaskManager.getState();
     var status = bg.Task.getStatus();
     var text = '<div>State: ' + state + '</div>';
-    text += '<div class="next">Next task: ' + status.current + ' of ' + status.count + '</div';
+    var next = status.current <= status.count ? 'Next task: ' + status.current + ' of ' + status.count : 'done';
+    text += '<div class="next">' + next +'</div';
     $('#state').html( text );
     $('body')[0].className = state;
     var className;
