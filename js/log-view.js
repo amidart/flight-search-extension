@@ -38,7 +38,7 @@
         url: record.data.url,
         targetPrice: record.data.targetPrice,
         error: !!error,
-        result: !!error ? error : record.data.price,
+        result: !!error ? '' : record.data.price,
         extra: renderExtra( record.data.extra )
       };
       html += Mustache.to_html( $('#recordTemplate').html(), data );

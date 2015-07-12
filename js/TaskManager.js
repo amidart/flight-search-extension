@@ -152,7 +152,7 @@ var TaskManager = (function(){
     setTimeout(function(){
       if (activeTabs[tabId]) {
         Log.add({
-          error: 'no response',
+          error: 'timeout',
           url: task.data.url,
           targetPrice: task.data.price,
         });

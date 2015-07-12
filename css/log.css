@@ -38,6 +38,7 @@ td.time {
 
 td.price {
   text-align: center;
+  width: 70px;
 }
 
 td.extra {

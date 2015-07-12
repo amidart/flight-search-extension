@@ -23,7 +23,7 @@ var UserData = (function(){
 
   var init = function(){
     initUI();
-    setView('complex');
+    setView('roundtrip');
   };
 
 
