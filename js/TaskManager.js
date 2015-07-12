@@ -80,7 +80,7 @@ var TaskManager = (function(){
       console.log(task);
       if (!task) {
         if ( !Task.hasLoopSetting() ) {
-          pause();
+          stop();
           return;
         }
         setTimeout(function(){
@@ -101,19 +101,13 @@ var TaskManager = (function(){
   };
 
 
-  var pause = function(){
-    state = 'paused';
-  };
-
-
-  var unpause = function(){
-    state = 'running';
+  var resetIndex = function(){
+    Task.resetIndex();
   };
 
 
   var stop = function(){
     state = 'stopped';
-    Task.resetIndex();
     for (var i = 0, len = timers.length; i < len; i++) {
       deleteTimer(timers[i]);
     }
@@ -186,9 +180,8 @@ var TaskManager = (function(){
     getState: getState,
     getConfig: getConfig,
     start: start,
-    pause: pause,
-    unpause: unpause,
     stop: stop,
+    resetIndex: resetIndex,
     reset: reset,
     processResult: processResult
   };

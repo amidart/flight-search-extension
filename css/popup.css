@@ -70,14 +70,6 @@ hr {
   display: none;
 }
 
-.paused #btn-pause {
-  display: none;
-}
-
 .stopped #btn-stop {
-  display: none;
-}
-
-.stopped #btn-pause {
   display: none;
 }

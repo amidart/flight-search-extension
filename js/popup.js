@@ -69,7 +69,6 @@
     $('body')[0].className = state;
     var className;
     if (state === 'running') className = 'bg-success';
-    else if (state === 'paused') className = 'bg-warning';
     else if (state === 'stopped') className = 'bg-danger';
     $('#state')[0].className = className;
   };
