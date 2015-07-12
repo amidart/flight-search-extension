@@ -166,7 +166,7 @@ var UserData = (function(){
       }
     }, function(){
       status.success(_('status_ok'), 1000);
-      $('#result').val('');
+      $('#result').html('');
     });
   };
 
