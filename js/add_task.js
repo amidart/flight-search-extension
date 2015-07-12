@@ -8,7 +8,15 @@ var Leg = function( from, to, daysMin, daysMax ){
 
 
 Leg.prototype.renderForm = function() {
-  return Mustache.to_html( document.querySelector('#leg-template').textContent, this);
+  return Mustache.to_html(
+    document.querySelector('#leg-template').textContent,
+    {
+      label_from_airport: _('label_from_airport'),
+      label_to_airport: _('label_to_airport'),
+      label_days_min: _('label_days_min'),
+      label_days_max: _('label_days_max')
+    }
+  );
 };
 
 
@@ -134,10 +142,10 @@ var UserData = (function(){
   var validateResults = function( onSuccess, onError ){
     var errors = [];
     if ( !parseInt($('#targetPrice').val()) ) {
-      errors.push('Target price is empty');
+      errors.push( _('error_price_empty') );
     }
     if ( !$('#result').val() ) {
-      errors.push('Empty tasks list. Press "Generate" first.');
+      errors.push( _('error_tasks_empty') );
     }
     if (errors.length) {
       var errorStr = errors.join('</p><p>');
@@ -157,7 +165,7 @@ var UserData = (function(){
         price: price
       }
     }, function(){
-      status.success('Added', 1000);
+      status.success(_('status_ok'), 1000);
       $('#result').val('');
     });
   };

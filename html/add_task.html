@@ -12,29 +12,29 @@
 
     <div class="row">
       <div class="col-xs-12 btn-group" role="group">
-        <a href="#" id="oneway" class="btn btn-default btn-xs switch-type">one-way</a>
-        <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type">round-trip</a>
-        <a href="#" id="complex" class="btn btn-default btn-xs switch-type">complex</a>
+        <a href="#" id="oneway" class="btn btn-default btn-xs switch-type" data-i18n="btn_oneway"></a>
+        <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type" data-i18n="btn_roundtrip"></a>
+        <a href="#" id="complex" class="btn btn-default btn-xs switch-type" data-i18n="btn_complex"></a>
       </div>
     </div>
 
 
     <div id="dates" class="row">
-      <div class="col-xs-3">
-        <label>MIN start date</label>
+      <div class="col-xs-4">
+        <label data-i18n="label_min_start"></label>
         <input type="text" id="startDate" class="form-control datepicker" placeholder="">
       </div>
-      <div class="col-xs-3">
-        <label>MAX start date</label>
+      <div class="col-xs-4">
+        <label data-i18n="label_max_start"></label>
         <input type="text" id="endDate" class="form-control datepicker" placeholder="">
       </div>
 
       <div id="days" class="col-xs-2 round-trip view-el view-roundtrip">
-          <label>Days min</label>
+          <label data-i18n="label_days_min"></label>
           <input type="number" id="daysMin" class="form-control days" placeholder="">
       </div>
       <div class="col-xs-2 round-trip view-el view-roundtrip">
-          <label>Days max</label>
+          <label data-i18n="label_days_max"></label>
           <input type="number" id="daysMax" class="form-control days" placeholder="">
       </div>
 
@@ -44,7 +44,7 @@
       <div class="legs"></div>
       <div class="row">
         <div class="col-xs-1">
-          <a href="#" id="add-leg" class="btn btn-info btn-xs view-el view-complex">add</a>
+          <a href="#" id="add-leg" class="btn btn-info btn-xs view-el view-complex" data-i18n="btn_add_leg"></a>
         </div>
       </div>
     </div>
@@ -53,39 +53,42 @@
     <div class="prefs-container">
       <div class="row">
         <div class="form-group col-xs-2">
-          <label>Adults</label>
+          <label data-i18n="label_adults"></label>
           <input type="number" id="adults" class="form-control" value="1">
         </div>
         <div class="form-group col-xs-3">
-          <label>Class</label>
+          <label data-i18n="label_class"></label>
           <select class="form-control" id="flightClass">
-            <option value="e" selected>econom</option>
-            <option value="b">business</option>
+            <option value="e" selected data-i18n="val_econom"></option>
+            <option value="b" data-i18n="val_business"></option>
           </select>
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <a href="#" id="generate" class="btn btn-default">Generate</a>
+      <a href="#" id="generate" class="btn btn-default" data-i18n="btn_generate"></a>
     </div>
 
     <div class="row text-center">
       <div class="col-xs-12">
-        <h3>Result<span id="result-count"></span></h3>
+        <h3>
+          <span data-i18n="label_result"></span>
+          <span id="result-count"></span>
+        </h3>
         <textarea id="result" class="form-control" rows="10"></textarea>
       </div>
     </div>
     <div class="row">
         <div class="col-xs-4"></div>
         <div class="col-xs-4">
-          <input type="number" id="targetPrice" class="form-control" placeholder="Target price">
+          <input type="number" id="targetPrice" class="form-control" data-i18n="placeholder=label_target_price">
         </div>
         <div class="col-xs-4"></div>
     </div>
     <div class="row text-center">
       <div class="col-xs-12">
-        <a href="#" id="enqueue-btn" class="btn btn-lg btn-success">Enqueue tasks</a>
+        <a href="#" id="enqueue-btn" class="btn btn-lg btn-success" data-i18n="btn_enqueue"></a>
       </div>
     </div>
     <div id="status" class="text-center"></div>
@@ -95,20 +98,20 @@
   <script type="text/template" id="leg-template">
     <form class="leg row">
       <div class="form-group">
-        <div class="col-xs-3">
-          <label>From (airport code)</label>
+        <div class="col-xs-4">
+          <label>{{label_from_airport}}</label>
           <input type="text" class="form-control iata-from">
         </div>
-        <div class="col-xs-3">
-          <label>To (airport code)</label>
+        <div class="col-xs-4">
+          <label>{{label_to_airport}}</label>
           <input type="text" class="form-control col-xs-3 iata-to">
         </div>
         <div class="col-xs-2 view-el view-complex days">
-          <label>Days min</label>
+          <label>{{label_days_min}}</label>
           <input type="number" class="form-control days-min" min="1">
         </div>
         <div class="col-xs-2 view-el view-complex days">
-          <label>Days max</label>
+          <label>{{label_days_max}}</label>
           <input type="number" class="form-control days-max" min="1">
         </div>
       </div>
@@ -120,6 +123,8 @@
   <script type="text/javascript" src="/lib/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="/lib/jquery-ui/jquery-ui.min.js"></script>
   <script type="text/javascript" src="/lib/mustache-0.8.1.min.js"></script>
+  <script type="text/javascript" src="/js/i18n.alias.js"></script>
+  <script type="text/javascript" src="/js/i18n.dom.js"></script>
   <script type="text/javascript" src="/js/Status.js"></script>
   <script type="text/javascript" src="/js/add_task.js"></script>
 

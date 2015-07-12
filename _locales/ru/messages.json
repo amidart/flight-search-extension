@@ -1,0 +1,181 @@
+{
+  "extName": {
+    "message": "FlyMore.PayLess"
+  },
+  "extDesc": {
+    "message": ""
+  },
+
+  /**
+   * Popup
+   */
+
+  "state": {
+    "message": "Состояние"
+  },
+  "state_running": {
+    "message": "запущен"
+  },
+  "state_stopped": {
+    "message": "остановлен"
+  },
+  "state_done": {
+    "message": "все задачи выполнены"
+  },
+
+  "status_ok": {
+    "message": "Выполнено"
+  },
+
+  "btn_run": {
+    "message": "Старт"
+  },
+  "btn_stop": {
+    "message": "Стоп"
+  },
+  "btn_resetIndex": {
+    "message": "Перейти к началу"
+  },
+  "btn_addTask": {
+    "message": "Добавить задачи"
+  },
+  "btn_showLog": {
+    "message": "Показать историю"
+  },
+  "btn_clearTasks": {
+    "message": "Очистить список задач"
+  },
+  "btn_clearLog": {
+    "message": "Очистить историю"
+  },
+  "btn_save": {
+    "message": "Сохранить"
+  },
+
+  "label_next_task": {
+    "message": "Следующая задача"
+  },
+  "label_of": {
+    "message": "из"
+  },
+  "label_loop": {
+    "message": "повторить при завершении"
+  },
+  "label_tabs": {
+    "message": "Вкладок"
+  },
+  "label_interval": {
+    "message": "Интервал"
+  },
+  "label_settings": {
+    "message": "Настройки"
+  },
+
+
+  /**
+   * Log
+   */
+
+  "label_log": {
+    "message": "История"
+  },
+  "th_checking_time": {
+    "message": "Время проверки"
+  },
+  "th_url": {
+    "message": "Url"
+  },
+  "th_target": {
+    "message": "Цель"
+  },
+  "th_price": {
+    "message": "Цена"
+  },
+  "th_info": {
+    "message": "Информация"
+  },
+
+  "btn_only_success": {
+    "message": "Только с подходящей ценой"
+  },
+  "btn_only_failed": {
+    "message": "Только ошибки"
+  },
+  "btn_show_all": {
+    "message": "Показать все"
+  },
+
+  "label_filter": {
+    "message": "Фильтр"
+  },
+
+
+  /**
+   * Add task
+   */
+
+  "btn_oneway": {
+    "message": "в одну сторону"
+  },
+  "btn_roundtrip": {
+    "message": "туда-обратно"
+  },
+  "btn_complex": {
+    "message": "сложный маршрут"
+  },
+  "btn_add_leg": {
+    "message": "добавить перелет"
+  },
+  "btn_generate": {
+    "message": "Сгенерировать"
+  },
+  "btn_enqueue": {
+    "message": "Добавить в очередь"
+  },
+
+  "label_min_start": {
+    "message": "MIN дата вылета"
+  },
+  "label_max_start": {
+    "message": "MAX дата вылета"
+  },
+  "label_from_airport": {
+    "message": "Код аэропорта вылета"
+  },
+  "label_to_airport": {
+    "message": "Код аэропорта прилета"
+  },
+  "label_days_min": {
+    "message": "Дней (min)"
+  },
+  "label_days_max": {
+    "message": "Дней (max)"
+  },
+  "label_adults": {
+    "message": "Взрослых"
+  },
+  "label_class": {
+    "message": "Класс перелета"
+  },
+  "label_result": {
+    "message": "Результат"
+  },
+  "label_target_price": {
+    "message": "Целевая цена"
+  },
+
+  "val_econom": {
+    "message": "эконом"
+  },
+  "val_business": {
+    "message": "бизнес"
+  },
+
+  "error_price_empty": {
+    "message": "Не заполнена \"Целевая цена\""
+  },
+  "error_tasks_empty": {
+    "message": "Список задач пуст. Сначала сгенерируйте список задач"
+  }
+}
+

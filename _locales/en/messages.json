@@ -76,14 +76,106 @@
    * Log
    */
 
-  "label_": {
-    "message": ""
+  "label_log": {
+    "message": "Log"
   },
-  "label_": {
-    "message": ""
+  "th_checking_time": {
+    "message": "Checking time"
   },
-  "label_": {
-    "message": ""
+  "th_url": {
+    "message": "Url"
+  },
+  "th_target": {
+    "message": "Target"
+  },
+  "th_price": {
+    "message": "Price"
+  },
+  "th_info": {
+    "message": "Information"
+  },
+
+  "btn_only_success": {
+    "message": "Only successful"
+  },
+  "btn_only_failed": {
+    "message": "Only failed"
+  },
+  "btn_show_all": {
+    "message": "Show All"
+  },
+
+  "label_filter": {
+    "message": "Filter"
+  },
+
+
+  /**
+   * Add task
+   */
+
+  "btn_oneway": {
+    "message": "one-way"
+  },
+  "btn_roundtrip": {
+    "message": "round-trip"
+  },
+  "btn_complex": {
+    "message": "complex"
+  },
+  "btn_add_leg": {
+    "message": "add"
+  },
+  "btn_generate": {
+    "message": "Generate"
+  },
+  "btn_enqueue": {
+    "message": "Enqueue task"
+  },
+
+  "label_min_start": {
+    "message": "MIN start date"
+  },
+  "label_max_start": {
+    "message": "MAX start date"
+  },
+  "label_from_airport": {
+    "message": "From (airport code)"
+  },
+  "label_to_airport": {
+    "message": "To (airport code)"
+  },
+  "label_days_min": {
+    "message": "Days min"
+  },
+  "label_days_max": {
+    "message": "Days max"
+  },
+  "label_adults": {
+    "message": "Adults"
+  },
+  "label_class": {
+    "message": "Class"
+  },
+  "label_result": {
+    "message": "Result"
+  },
+  "label_target_price": {
+    "message": "Target price"
+  },
+
+  "val_econom": {
+    "message": "econom"
+  },
+  "val_business": {
+    "message": "business"
+  },
+
+  "error_price_empty": {
+    "message": "Target price is empty"
+  },
+  "error_tasks_empty": {
+    "message": "Empty tasks list. Press \"Generate\" first."
   }
 }
 
