@@ -17,6 +17,7 @@ var App = (function(){
         var data = request.data;
         if (cmd === 'enqueueTasks') {
           enqueueTasks( data );
+          if (typeof sendResponse === 'function') sendResponse();
         }
         else if (cmd === 'flights') {
           TaskManager.processResult( sender.tab.id, data );

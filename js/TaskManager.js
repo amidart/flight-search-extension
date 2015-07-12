@@ -14,6 +14,7 @@ var TaskManager = (function(){
   var init = function( cbOnError ){
     if (typeof cbOnError === 'function') onError = cbOnError;
     restore();
+    if (state === 'running') start();
   };
 
 

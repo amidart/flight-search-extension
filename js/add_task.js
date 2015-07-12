@@ -19,6 +19,7 @@ Leg.prototype.renderForm = function() {
 var UserData = (function(){
 
   var view = '';
+  var status = null;
 
   var init = function(){
     initUI();
@@ -27,6 +28,12 @@ var UserData = (function(){
 
 
   var initUI = function(){
+
+    status = new Helpers.Status( $('#status'), {
+      show: {method: 'show', params: []},
+      hide: {method: 'hide', params: []}
+    } );
+
     $('#add-leg').click(addLeg);
 
     $('.switch-type').click(function(){
@@ -44,7 +51,15 @@ var UserData = (function(){
 
     $('#enqueue-btn').click(function(){
       var price = parseInt( $('#targetPrice').val() );
-      enqueueTasks( $('#result').val().split('\n'), price );
+      validateResults(
+        function(){
+          enqueueTasks( $('#result').val().split('\n'), price );
+        },
+        function( error ){
+          status.error(error, 5000);
+        }
+      );
+
     });
   };
 
@@ -77,6 +92,7 @@ var UserData = (function(){
   var generateTasks = function(){
     var data = getFormsData();
     var results = Generator[ data.type ]( data );
+    console.log(results);
     var html = '';
     for (var i = 0, len = results.length; i < len; i++) {
       var result = results[i];
@@ -96,21 +112,35 @@ var UserData = (function(){
       res.daysMin = parseInt( $('#daysMin').val() );
       res.daysMax = parseInt( $('#daysMax').val() );
     }
-    $('.leg').each(function(index, form){
-      var $form = $(form);
+    $('.leg').each(function(index, leg){
+      var $leg = $(leg);
       legs.push({
-        from: $form.find('.iata-from').val(),
-        to: $form.find('.iata-to').val(),
-        daysMin: parseInt( $form.find('.daysMin').val() ),
-        daysMax: parseInt( $form.find('.daysMax').val() )
+        from: $leg.find('.iata-from').val(),
+        to: $leg.find('.iata-to').val(),
+        daysMin: parseInt( $leg.find('.days-min').val() ),
+        daysMax: parseInt( $leg.find('.days-max').val() )
       });
     });
     res.class = $('#flightClass').val();
     res.adults = parseInt( $('#adults').val() );
-    res.price = parseInt( $('#targetPrice').val() );
     res.legs = legs;
     console.log(res);
     return res;
+  };
+
+
+  var validateResults = function( onSuccess, onError ){
+    var errors = [];
+    if ( !parseInt($('#targetPrice').val()) ) {
+      errors.push('Target price is empty');
+    }
+    if ( !$('#result').val() ) {
+      errors.push('Empty tasks list. Press "Generate" first.');
+    }
+    if (errors.length) {
+      var errorStr = errors.join('</p><p>');
+      onError( '<p>' + errorStr + '</p>');
+    }
   };
 
 
@@ -121,6 +151,9 @@ var UserData = (function(){
         tasks: tasks,
         price: price
       }
+    }, function(){
+      status.success('Added', 1000);
+      $('#result').val('');
     });
   };
 
