@@ -134,10 +134,10 @@
   },
 
   "label_min_start": {
-    "message": "MIN start date"
+    "message": "Start date (min)"
   },
   "label_max_start": {
-    "message": "MAX start date"
+    "message": "Start date (max)"
   },
   "label_from_airport": {
     "message": "From (airport code)"
@@ -146,10 +146,10 @@
     "message": "To (airport code)"
   },
   "label_days_min": {
-    "message": "Days min"
+    "message": "Days (min)"
   },
   "label_days_max": {
-    "message": "Days max"
+    "message": "Days (max)"
   },
   "label_adults": {
     "message": "Adults"
@@ -164,8 +164,8 @@
     "message": "Target price"
   },
 
-  "val_econom": {
-    "message": "econom"
+  "val_economy": {
+    "message": "economy"
   },
   "val_business": {
     "message": "business"
