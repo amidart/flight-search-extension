@@ -34,12 +34,12 @@
     $('#btn-reset').click(function(){
       bg.TaskManager.reset();
       updateState();
-      status.success('Tasks list was cleared', 1000);
+      status.success(_('status_ok'), 1000);
     });
 
     $('#btn-clear-log').click(function(){
       bg.Log.clear();
-      status.success('Log was cleared', 1000);
+      status.success(_('status_ok'), 1000);
     });
 
     $('#loop').change(function(){
@@ -53,7 +53,7 @@
         tabs: tabs,
         interval: interval
       });
-      status.success('Saved', 1000);
+      status.success(_('status_ok'), 1000);
       bg.TaskManager.start();
     });
   };
@@ -62,15 +62,14 @@
   var updateState = function(){
     var state = bg.TaskManager.getState();
     var status = bg.Task.getStatus();
-    var text = '<div>State: ' + state + '</div>';
-    var next = status.current <= status.count ? 'Next task: ' + status.current + ' of ' + status.count : 'done';
-    text += '<div class="next">' + next +'</div';
-    $('#state').html( text );
+    var next = status.current <= status.count ? _('label_next_task') + ': ' + status.current + ' ' + _('label_of') + ' ' + status.count : _('state_done');
+    $('#state').html( _('state_' + state) );
+    $('.next').html( next );
     $('body')[0].className = state;
     var className;
     if (state === 'running') className = 'bg-success';
     else if (state === 'stopped') className = 'bg-danger';
-    $('#state')[0].className = className;
+    $('#state-container')[0].className = className;
   };
 
 

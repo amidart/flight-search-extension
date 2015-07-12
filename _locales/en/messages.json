@@ -1,0 +1,89 @@
+{
+  "extName": {
+    "message": "FlyMore.PayLess"
+  },
+  "extDesc": {
+    "message": ""
+  },
+
+  /**
+   * Popup
+   */
+
+  "state": {
+    "message": "State"
+  },
+  "state_running": {
+    "message": "running"
+  },
+  "state_stopped": {
+    "message": "stopped"
+  },
+  "state_done": {
+    "message": "done"
+  },
+
+  "status_ok": {
+    "message": "Done"
+  },
+
+  "btn_run": {
+    "message": "Run"
+  },
+  "btn_stop": {
+    "message": "Stop"
+  },
+  "btn_resetIndex": {
+    "message": "Reset index"
+  },
+  "btn_addTask": {
+    "message": "Add task"
+  },
+  "btn_showLog": {
+    "message": "Show log"
+  },
+  "btn_clearTasks": {
+    "message": "Clear All Tasks"
+  },
+  "btn_clearLog": {
+    "message": "Clear Log"
+  },
+  "btn_save": {
+    "message": "Save"
+  },
+
+  "label_next_task": {
+    "message": "Next task"
+  },
+  "label_of": {
+    "message": "of"
+  },
+  "label_loop": {
+    "message": "Loop"
+  },
+  "label_tabs": {
+    "message": "Tabs"
+  },
+  "label_interval": {
+    "message": "Interval"
+  },
+  "label_settings": {
+    "message": "Settings"
+  },
+
+
+  /**
+   * Log
+   */
+
+  "label_": {
+    "message": ""
+  },
+  "label_": {
+    "message": ""
+  },
+  "label_": {
+    "message": ""
+  }
+}
+
