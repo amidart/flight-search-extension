@@ -3,7 +3,7 @@
   "name": "Flight Scanner",
   "description": "",
   "default_locale": "en",
-  "version": "0.1",
+  "version": "0.1.0",
 
   "icons": {
     "128": "/img/icon256.png"
@@ -17,9 +17,11 @@
   "background": {
     "scripts": [
       "/lib/jquery-2.1.1.min.js",
+      "/js/i18n.alias.js",
       "/js/Task.js",
       "/js/TaskManager.js",
       "/js/Log.js",
+      "/js/Notifier.js",
       "/js/background.js"
     ]
   },
@@ -42,5 +44,6 @@
   ],
 
   "permissions": [
+    "notifications"
   ]
 }

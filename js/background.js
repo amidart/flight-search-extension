@@ -2,10 +2,13 @@ var App = (function(){
 
   var init = function(){
     initMessaging();
+    Notifier.init({
+      isClickable: true,
+      onClick: onNotificationClickHandler
+    });
     Task.init();
     TaskManager.init( console.log.bind(console) );
     Log.init( 1000 );
-    //TaskManager.start();
   };
 
 
@@ -39,6 +42,11 @@ var App = (function(){
         price: data.price
       });
     }
+  };
+
+
+  var onNotificationClickHandler = function(id){
+    chrome.tabs.create({url: '/html/log.html'});
   };
 
 

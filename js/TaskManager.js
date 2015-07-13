@@ -133,7 +133,7 @@ var TaskManager = (function(){
       var actualPrice = result.price;
       console.log(actualPrice, targetPrice);
       if (actualPrice <= targetPrice) {
-        //Notifier.notify();
+        Notifier.notify();
         success = true;
       }
       Log.add({
