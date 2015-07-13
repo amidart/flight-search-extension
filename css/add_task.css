@@ -29,6 +29,15 @@ body {
   display: none !important;
 }
 
+hr {
+  margin: 10px 0;
+}
+
+#logo {
+  margin-top: 10px;
+}
+
+
 #result {
   width: 100%;
 }
