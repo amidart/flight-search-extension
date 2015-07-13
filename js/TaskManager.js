@@ -71,7 +71,6 @@ var TaskManager = (function(){
       runTask();
     }, delay );
     timers.push(timer);
-    console.log(timer, timers);
   };
 
 
@@ -133,7 +132,10 @@ var TaskManager = (function(){
       var actualPrice = result.price;
       console.log(actualPrice, targetPrice);
       if (actualPrice <= targetPrice) {
-        Notifier.notify();
+        Notifier.notify( {
+          url: task.data.url,
+          price: actualPrice
+        });
         success = true;
       }
       Log.add({

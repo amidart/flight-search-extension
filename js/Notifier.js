@@ -14,10 +14,11 @@ var Notifier = (function(){
   };
 
 
-  var notify = function(){
+  var notify = function( data ){
     var title = _('text_tickets_found');
     var text = _('text_open_log');
     showNotification( title, text );
+    _gaq.push(['_trackEvent', 'tickets' , 'found', data.url]);
   };
 
 
