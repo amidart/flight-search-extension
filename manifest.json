@@ -6,7 +6,8 @@
   "version": "0.1.0",
 
   "icons": {
-    "128": "/img/icon256.png"
+    "128": "/img/icon128.png",
+    "256": "/img/icon256.png"
   },
 
   "browser_action": {
