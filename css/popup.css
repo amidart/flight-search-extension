@@ -1,7 +1,7 @@
 body {
   width: 450px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .btn {
@@ -10,6 +10,10 @@ body {
 
 hr {
   margin: 5px;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 /**
@@ -72,4 +76,14 @@ hr {
 
 .stopped #btn-stop {
   display: none;
+}
+
+/**
+ * About
+ */
+
+.version-container {
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 0.5em;
 }

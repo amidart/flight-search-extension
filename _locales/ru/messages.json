@@ -51,6 +51,9 @@
   "btn_save": {
     "message": "Сохранить"
   },
+  "btn_about": {
+    "message": "О расширении"
+  },
 
   "label_next_task": {
     "message": "Следующая задача"
@@ -176,6 +179,43 @@
   },
   "error_tasks_empty": {
     "message": "Список задач пуст. Сначала сгенерируйте список задач"
+  },
+
+  /**
+   * About
+   */
+
+  "label_version": {
+    "message": "Версия"
+  },
+  "btn_back": {
+    "message": "Назад"
+  },
+  "text_about": {
+    "message": "Инструмент для перебора всех возможных комбинаций перелетов для поиска наилучшей цены."
+  },
+  "h_offers": {
+    "message": "Где искать спецпредложения"
+  },
+  "h_feedback": {
+    "message": "Обратная связь"
+  },
+  "text_feedback_author": {
+    "message": "Автор — Дмитрий Артамошкин"
+  },
+  "text_feedback_text": {
+    "message": "По всем вопросам и предложениям пишите —"
+  },
+
+  /**
+   * Etc
+   */
+
+  "text_tickets_found": {
+    "message": "Найдены билеты"
+  },
+  "text_open_log": {
+    "message": "Открыть историю"
   }
 }
 

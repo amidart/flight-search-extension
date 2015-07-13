@@ -51,6 +51,9 @@
   "btn_save": {
     "message": "Save"
   },
+  "btn_about": {
+    "message": "About"
+  },
 
   "label_next_task": {
     "message": "Next task"
@@ -176,6 +179,44 @@
   },
   "error_tasks_empty": {
     "message": "Empty tasks list. Press \"Generate\" first."
+  },
+
+  /**
+   * About
+   */
+
+  "label_version": {
+    "message": "Version"
+  },
+  "btn_back": {
+    "message": "Back"
+  },
+  "text_about": {
+    "message": "Find best price for airline tickets with this search automation tool"
+  },
+  "h_offers": {
+    "message": "Where can I find airline deals"
+  },
+  "h_feedback": {
+    "message": "Feedback"
+  },
+  "text_feedback_author": {
+    "message": "Author — Dmitry Artamoshkin"
+  },
+  "text_feedback_text": {
+    "message": "If you have any questions or comments please feel free to contact me at"
+  },
+
+  /**
+   * Etc
+   */
+
+  "text_tickets_found": {
+    "message": "Found tickets"
+  },
+  "text_open_log": {
+    "message": "Click to open log"
   }
+
 }
 

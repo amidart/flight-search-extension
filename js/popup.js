@@ -20,6 +20,8 @@
 
   var initUI = function(){
 
+    $('.version').text( chrome.runtime.getManifest().version );
+
     status = new Helpers.Status( $('#status'), {
       show: {method: 'show', params: []},
       hide: {method: 'hide', params: []}
