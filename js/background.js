@@ -42,6 +42,7 @@ var App = (function(){
         price: data.price
       });
     }
+    TaskManager.start();
   };
 
 
