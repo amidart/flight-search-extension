@@ -1,3 +1,7 @@
+/**
+ * Leg class
+ */
+
 var Leg = function( from, to, daysMin, daysMax ){
   this.from = from || '';
   this.to = to || '';
@@ -22,6 +26,15 @@ Leg.prototype.renderForm = function() {
       label_days_max: _('label_days_max')
     }
   );
+};
+
+
+Leg.prototype.initUI = function() {
+  var self = this;
+  this.$root.find('.leg-remove').click(function(){
+    self.remove();
+  });
+  this.typeahead();
 };
 
 
@@ -59,6 +72,11 @@ Leg.prototype.typeahead = function(){
     if (!current) return;
     this.value = current.id;
   });
+};
+
+
+Leg.prototype.remove = function(){
+  this.$root.remove();
 };
 
 /**
@@ -144,7 +162,7 @@ var UserData = (function(){
     var html = leg.renderForm();
     var $node = $(html).appendTo('.legs');
     leg.setRoot($node);
-    leg.typeahead();
+    leg.initUI();
   };
 
 
@@ -237,6 +255,11 @@ Date.prototype.yyyymmdd = function() {
   var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
   return yyyy + '-' + mm + '-' + dd;
 };
+
+
+/**
+ * Generator
+ */
 
 
 var Generator = (function(){
@@ -386,6 +409,10 @@ var Generator = (function(){
 
 })();
 
+
+/**
+ * Providers
+ */
 
 
 var Buruki = (function(){

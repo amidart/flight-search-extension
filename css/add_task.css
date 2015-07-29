@@ -1,6 +1,11 @@
 body {
   font-size: 12px;
 }
+
+hr {
+  margin: 10px 0;
+}
+
 .container {
   width: 600px;
 }
@@ -25,13 +30,35 @@ body {
   display: inline-block !important;
 }
 
+/**
+ * Legs
+ */
+
 .legs form:last-child .days {
   display: none !important;
 }
 
-hr {
-  margin: 10px 0;
+.leg {
+  position: relative;
 }
+
+.leg .leg-remove-container {
+  position: absolute;
+  top: 32px;
+  left: -10px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.leg .leg-remove-container span:hover {
+  transition: color 0.3s ease;
+  color: #666;
+}
+
+.leg:first-child .leg-remove-container {
+  display: none;
+}
+
 
 #logo {
   margin-top: 10px;
