@@ -94,7 +94,39 @@ var UserData = (function(){
   var addLeg = function(){
     var leg = new Leg();
     var html = leg.renderForm();
-    $('.legs').append( html );
+    //$('.legs').append( html );
+    var $node = $(html).appendTo('.legs');
+    $node.find('.iata-from, .iata-to')
+      .typeahead({
+        minLength: 3,
+        matcher: function( item ){
+          return true;
+        },
+        source: function (query, process) {
+          return $.get(
+            'http://buruki.ru/esac/city_airport?term=' + query,
+            function (data) {
+              if (typeof data !== 'object' ||
+                !data.results ||
+                !data.results.length) {
+                return false;
+              }
+              var res = data.results.map(function(item){
+                return {
+                  id: item.iata,
+                  name: item.title + ' - ' + item.iata
+                };
+              });
+              process(res);
+            }
+          );
+        }
+      });
+      $node.find('.iata-from, .iata-to').change(function(){
+        var current = $(this).typeahead("getActive");
+        if (!current) return;
+        this.value = current.id;
+      });
   };
 
 
