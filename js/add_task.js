@@ -7,6 +7,11 @@ var Leg = function( from, to, daysMin, daysMax ){
 };
 
 
+Leg.prototype.setRoot = function( $node ) {
+  this.$root = $node;
+};
+
+
 Leg.prototype.renderForm = function() {
   return Mustache.to_html(
     document.querySelector('#leg-template').textContent,
@@ -19,6 +24,42 @@ Leg.prototype.renderForm = function() {
   );
 };
 
+
+Leg.prototype.typeahead = function(){
+  this.$root
+    .find('.iata-from, .iata-to')
+    .typeahead({
+      minLength: 3,
+      matcher: function( item ){
+        return true;
+      },
+      source: function (query, process) {
+        return $.get(
+          'http://buruki.ru/esac/city_airport?term=' + query,
+          function (data) {
+            if (typeof data !== 'object' ||
+              !data.results ||
+              !data.results.length) {
+              return false;
+          }
+          var res = data.results.map(function(item){
+            return {
+              id: item.iata,
+              name: item.title + ' - ' + item.iata
+            };
+          });
+          process(res);
+        }
+        );
+      }
+    });
+  // on change
+  this.$root.find('.iata-from, .iata-to').change(function(){
+    var current = $(this).typeahead("getActive");
+    if (!current) return;
+    this.value = current.id;
+  });
+};
 
 /**
  *
@@ -94,39 +135,9 @@ var UserData = (function(){
   var addLeg = function(){
     var leg = new Leg();
     var html = leg.renderForm();
-    //$('.legs').append( html );
     var $node = $(html).appendTo('.legs');
-    $node.find('.iata-from, .iata-to')
-      .typeahead({
-        minLength: 3,
-        matcher: function( item ){
-          return true;
-        },
-        source: function (query, process) {
-          return $.get(
-            'http://buruki.ru/esac/city_airport?term=' + query,
-            function (data) {
-              if (typeof data !== 'object' ||
-                !data.results ||
-                !data.results.length) {
-                return false;
-              }
-              var res = data.results.map(function(item){
-                return {
-                  id: item.iata,
-                  name: item.title + ' - ' + item.iata
-                };
-              });
-              process(res);
-            }
-          );
-        }
-      });
-      $node.find('.iata-from, .iata-to').change(function(){
-        var current = $(this).typeahead("getActive");
-        if (!current) return;
-        this.value = current.id;
-      });
+    leg.setRoot($node);
+    leg.typeahead();
   };
 
 
