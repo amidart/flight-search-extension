@@ -94,6 +94,13 @@ var UserData = (function(){
       dateFormat: 'yy-mm-dd'
     });
 
+    $('#startDate').change(function(){
+      if ( $('#endDate').val() ) return;
+      var start = new Date( this.value );
+      var end = new Date( start.setDate(start.getDate() + 14) );
+      $('#endDate').val( end.yyyymmdd() );
+    });
+
     $('#generate').click(function(){
       generateTasks();
     });
