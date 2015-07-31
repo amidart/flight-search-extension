@@ -132,6 +132,9 @@
   "btn_generate": {
     "message": "Сгенерировать"
   },
+  "btn_delete10": {
+    "message": "удалить 10% задач"
+  },
   "btn_enqueue": {
     "message": "Добавить в очередь"
   },

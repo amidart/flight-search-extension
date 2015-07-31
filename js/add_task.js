@@ -123,6 +123,16 @@ var UserData = (function(){
       generateTasks();
     });
 
+    $('#delete10').click(function(){
+      deleteRandomLines( 10 );
+    });
+
+    $('#result').change(function(){
+      if (!this.value) return;
+      var count = this.value.split('\n').length;
+      $('#result-count').html( '(' + count + ')' );
+    });
+
     $('#enqueue-btn').click(function(){
       var price = parseInt( $('#targetPrice').val() );
       validateResults(
@@ -171,12 +181,27 @@ var UserData = (function(){
     var results = Generator[ data.type ]( data );
     console.log(results);
     var html = '';
+    var lines = [];
     for (var i = 0, len = results.length; i < len; i++) {
       var result = results[i];
       html += Buruki[data.type]( result ) + '\n';
+      lines.push( Buruki[data.type]( result ) );
     }
-    $('#result').html( html );
-    $('#result-count').html( ' (' + results.length + ')' );
+    $('#result')
+      .val( lines.join('\n') )
+      .trigger('change');
+  };
+
+
+  var deleteRandomLines = function( percent ){
+    var lines = $('#result').val().split('\n');
+    lines = $.grep(lines, function(line){
+      var filtered = Math.floor( Math.random() * percent );
+      return filtered !== 0;
+    });
+    $('#result')
+      .val( lines.join('\n') )
+      .trigger('change');
   };
 
 
