@@ -27,6 +27,7 @@
     $('#btn-show-all').click(function(){
       $('body')[0].className = '';
     });
+    $('.tr-filter input').keyup(filterTableRows);
   };
 
 
@@ -129,6 +130,23 @@
     link.href = fileContents;
     link.click();
   };
+
+
+  var filterTableRows = function(){
+    var input = this;
+    var str = input.value;
+    var regexp = new RegExp(str, 'i');
+    var $table = $(input).closest('table');
+    var nthChild = $(input).closest('th')[0].cellIndex + 1;
+    $table.find('tbody tr').each(function(i, tr){
+      var $tr = $(tr);
+      var value = $tr.find('td:nth-child('+ nthChild + ')').text();
+      value = $.trim(value);
+      if (!value.match(regexp)) $tr.hide();
+      else $tr.show();
+    });
+  };
+
 
 
   return {

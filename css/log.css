@@ -40,6 +40,11 @@ td, th {
   padding: 2px 5px;
 }
 
+th input {
+  width: 100%;
+  text-align: center;
+}
+
 td.time {
   width: 130px;
 }
