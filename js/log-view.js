@@ -142,8 +142,9 @@
       var $tr = $(tr);
       var value = $tr.find('td:nth-child('+ nthChild + ')').text();
       value = $.trim(value);
-      if (!value.match(regexp)) $tr.hide();
-      else $tr.show();
+      var className = 'filtered-' + nthChild;
+      if (!value.match(regexp)) $tr.addClass(className);
+      else $tr.removeClass(className);
     });
   };
 

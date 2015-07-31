@@ -84,17 +84,23 @@ td .wrap-extra {
 }
 
 .success-only tbody tr {
-  display: none;
+  display: none ;
 }
 
 .success-only tbody tr.bg-success {
-  display: table-row;
+  display: table-row ;
 }
 
 .failed-only tbody tr {
-  display: none;
+  display: none ;
 }
 
 .failed-only tbody tr.bg-warning {
-  display: table-row;
+  display: table-row ;
+}
+
+tbody tr[class*=filtered],
+.success-only tbody tr[class*=filtered],
+.failed-only tbody tr[class*=filtered] {
+  display: none;
 }
