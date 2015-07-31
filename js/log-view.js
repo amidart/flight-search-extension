@@ -67,6 +67,17 @@
   };
 
 
+  var authorNote = function( isHtml ){
+    var text;
+    if (isHtml) text = i18n('html_author_note');
+    else text = i18n('text_author_note');
+    text = Mustache.to_html(text, {
+      url: 'https://chrome.google.com/webstore/detail/' + chrome.runtime.id
+    });
+    return text;
+  };
+
+
   var exportToCSV = function(){
     exportTableToCSV( $('#log'), 'flights.csv' );
   };
@@ -80,7 +91,7 @@
     tmpRowDelim = String.fromCharCode(0), // null character
     // actual delimiter characters for CSV format
     colDelim = '";"',
-    rowDelim = '"\r\n"',
+    rowDelim = '"\n"',
     // Grab text from table into CSV formatted string
     csv = '"' + $rows.map(function (i, row) {
       var $row = $(row),
@@ -95,14 +106,14 @@
     .split(tmpColDelim).join(colDelim) + '"',
 
     // Data URI
-    csvData = 'data:application/csv;charset=utf-8,' + '\ufeff' + encodeURIComponent(csv);
+    csvData = 'data:application/csv;charset=utf-8,' + '\ufeff' + encodeURIComponent('\n' + authorNote() + '\n\n') + encodeURIComponent(csv);
     saveToFile(csvData, filename);
   }
 
 
   var exportTableToXLS = (function() {
     var uri = 'data:application/vnd.ms-excel;base64,';
-    var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>';
+    var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body>' + authorNote('html') + '<br><br><br><table>{table}</table></body></html>';
     var base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))); };
     var format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }); };
     return function(table, fileName) {
@@ -113,7 +124,6 @@
 
 
   var saveToFile = function(fileContents, fileName) {
-    console.log('save');
     var link = document.createElement('a');
     link.download = fileName;
     link.href = fileContents;

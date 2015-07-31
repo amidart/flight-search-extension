@@ -232,7 +232,14 @@
   },
   "text_open_log": {
     "message": "Click to open log"
+  },
+  "text_author_note": {
+    "message": "This table was produced by Chrome extension \"FlightScanner\" - {{{url}}}"
+  },
+  "html_author_note": {
+    "message": "This table was produced by Chrome extension <a href=\"{{{url}}}\">\"FlightScanner\"</a>"
   }
+
 
 }
 

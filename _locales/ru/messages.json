@@ -230,6 +230,12 @@
   },
   "text_open_log": {
     "message": "Открыть историю"
+  },
+  "text_author_note": {
+    "message": "Таблица получена с помощью расширения для браузера Chrome \"FlightScanner\" - {{{url}}}"
+  },
+  "html_author_note": {
+    "message": "Таблица получена с помощью расширения для браузера Chrome <a href=\"{{url}}\">\"FlightScanner\"</a>"
   }
 }
 
