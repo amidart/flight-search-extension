@@ -27,6 +27,24 @@
     $('#btn-show-all').click(function(){
       $('body')[0].className = '';
     });
+    $('#log thead .tr-title th').hover(
+      function(){
+        $('<div>')
+          .html('<span class="glyphicon glyphicon-remove leg-remove" aria-hidden="true"></span>')
+          .addClass('delete-col')
+          .appendTo($(this))
+          .click(function(e){
+            e.stopPropagation();
+            var nthChild = $(this).closest('th')[0].cellIndex + 1;
+            console.log('tr td:nth-child(' + nthChild + ')');
+            $('#log').find('th:nth-child(' + nthChild + ')').remove();
+            $('#log').find('td:nth-child(' + nthChild + ')').remove();
+          });
+      },
+      function(){
+        $(this).find('.delete-col').remove();
+      }
+    );
     $('.tr-filter input').keyup(filterTableRows);
   };
 

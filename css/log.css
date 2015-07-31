@@ -35,9 +35,18 @@ thead th {
 }
 
 td, th {
+  position: relative;
   text-align: center;
   border: solid 1px #ccc;
   padding: 2px 5px;
+}
+
+th div.delete-col {
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  color: #aaa;
+  cursor: pointer;
 }
 
 th input {
