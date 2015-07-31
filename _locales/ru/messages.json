@@ -107,11 +107,19 @@
   "btn_show_all": {
     "message": "Показать все"
   },
+  "btn_export_csv": {
+    "message": "CSV"
+  },
+  "btn_export_xls": {
+    "message": "Excel"
+  },
 
   "label_filter": {
     "message": "Фильтр"
   },
-
+  "label_export": {
+    "message": "Экспорт"
+  },
 
   /**
    * Add task

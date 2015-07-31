@@ -12,12 +12,20 @@
 
   <div class="container">
 
-    <div class="controls pull-right">
-      <label data-i18n="label_filter"></label>
-      <a href="#" id="btn-success-only" class="btn btn-xs btn-success" data-i18n="btn_only_success"></a>
-      <a href="#" id="btn-failed-only" class="btn btn-xs btn-warning" data-i18n="btn_only_failed"></a>
-      <a href="#" id="btn-show-all" class="btn btn-xs btn-default" data-i18n="btn_show_all"></a>
-    </div>
+    <div class="controls">
+      <div class="filter pull-right">
+        <label data-i18n="label_filter"></label>
+        <a href="#" id="btn-success-only" class="btn btn-xs btn-success" data-i18n="btn_only_success"></a>
+        <a href="#" id="btn-failed-only" class="btn btn-xs btn-warning" data-i18n="btn_only_failed"></a>
+        <a href="#" id="btn-show-all" class="btn btn-xs btn-default" data-i18n="btn_show_all"></a>
+      </div>
+      <div class="export pull-right">
+        <label data-i18n="label_export"></label>
+        <a href="#" id="btn-export-csv" class="btn btn-xs btn-default" data-i18n="btn_export_csv"></a>
+        <a href="#" id="btn-export-xls" class="btn btn-xs btn-default" data-i18n="btn_export_xls"></a>
+      </div>
+    </div><!-- controls -->
+
     <h3 data-i18n="label_log"></h3>
     <table id="log" class="">
       <thead>

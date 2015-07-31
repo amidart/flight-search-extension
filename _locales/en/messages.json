@@ -107,10 +107,20 @@
   "btn_show_all": {
     "message": "Show All"
   },
+  "btn_export_csv": {
+    "message": "CSV"
+  },
+  "btn_export_xls": {
+    "message": "Excel"
+  },
 
   "label_filter": {
     "message": "Filter"
   },
+  "label_export": {
+    "message": "Export"
+  },
+
 
 
   /**
