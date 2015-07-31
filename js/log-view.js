@@ -95,7 +95,7 @@
     .split(tmpColDelim).join(colDelim) + '"',
 
     // Data URI
-    csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+    csvData = 'data:application/csv;charset=utf-8,' + '\ufeff' + encodeURIComponent(csv);
     saveToFile(csvData, filename);
   }
 
