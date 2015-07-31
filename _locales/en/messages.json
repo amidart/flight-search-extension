@@ -133,11 +133,15 @@
     "message": "Generate"
   },
   "btn_enqueue": {
-    "message": "Enqueue task"
+    "message": "Enqueue tasks"
+  },
+  "btn_shuffle": {
+    "message": "shuffle"
   },
   "btn_delete10": {
     "message": "delete 10% tasks"
   },
+
   "label_min_start": {
     "message": "Start date (min)"
   },

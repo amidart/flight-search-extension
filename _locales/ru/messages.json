@@ -132,6 +132,9 @@
   "btn_generate": {
     "message": "Сгенерировать"
   },
+  "btn_shuffle": {
+    "message": "в случайном порядке"
+  },
   "btn_delete10": {
     "message": "удалить 10% задач"
   },

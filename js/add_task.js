@@ -127,6 +127,10 @@ var UserData = (function(){
       deleteRandomLines( 10 );
     });
 
+    $('#shuffle').click(function(){
+      shuffleTasks();
+    });
+
     $('#result').change(function(){
       if (!this.value) return;
       var count = this.value.split('\n').length;
@@ -203,6 +207,30 @@ var UserData = (function(){
       .val( lines.join('\n') )
       .trigger('change');
   };
+
+
+  var shuffleTasks = function(){
+    var lines = $('#result').val().split('\n');
+    shuffle(lines);
+    $('#result')
+      .val( lines.join('\n') );
+  };
+
+
+  var shuffle = function(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex ;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
 
 
   var getFormsData = function(){
