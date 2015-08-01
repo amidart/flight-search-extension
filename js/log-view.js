@@ -13,10 +13,10 @@
 
   var initUI = function(){
     $('#btn-export-csv').click(function(){
-      exportToCSV();
+      exportTable('csv');
     });
     $('#btn-export-xls').click(function(){
-      exportTableToXLS( $('#log')[0], 'flights.xls' );
+      exportTable('xls');
     });
     $('#btn-success-only').click(function(){
       $('body')[0].className = 'success-only';
@@ -97,8 +97,18 @@
   };
 
 
-  var exportToCSV = function(){
-    exportTableToCSV( $('#log'), 'flights.csv' );
+  var exportTable = function( format ){
+    var $result = $('<table>');
+    $('#log tbody tr:visible').each(function(i, row){
+      $result.append( $(row).clone() );
+    });
+    var filename = 'flights.' + format;
+    if (format === 'csv') {
+      exportTableToCSV( $result, filename );
+    }
+    else if (format === 'xls') {
+      exportTableToXLS( $result[0], filename );
+    }
   };
 
 
