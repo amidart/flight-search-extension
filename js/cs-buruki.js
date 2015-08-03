@@ -15,7 +15,7 @@
     var items = $('.search-results-item');
     var flights = [];
     var len = items.length;
-    if (len > 3) len = 3;
+    if (len > 1) len = 1;
     for (var i = 0; i < len; i++) {
       var item = items[i];
       flights.push( processPriceItem( item ) );

@@ -36,7 +36,6 @@
           .click(function(e){
             e.stopPropagation();
             var nthChild = $(this).closest('th')[0].cellIndex + 1;
-            console.log('tr td:nth-child(' + nthChild + ')');
             $('#log').find('th:nth-child(' + nthChild + ')').remove();
             $('#log').find('td:nth-child(' + nthChild + ')').remove();
           });
@@ -70,14 +69,16 @@
     }
     $('#log tbody').html(html);
     $('#log').stupidtable();
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({
+      container: 'body'
+    });
   };
 
 
   var renderExtra = function( flights ){
     var res = '';
     if (!flights) return res;
-    var template = '<div>{{provider}} {{depTime}} {{depAirport}} {{flightTime}} - {{price}}</div>';
+    var template = '<div>{{provider}} {{depTime}} {{depAirport}} {{flightTime}}</div>';
     for (var i = 0, len = flights.length; i < len; i++) {
       var flight = flights[i];
       res += Mustache.to_html(template, flight);
