@@ -188,8 +188,8 @@ var UserData = (function(){
     var lines = [];
     for (var i = 0, len = results.length; i < len; i++) {
       var result = results[i];
-      html += Buruki[data.type]( result ) + '\n';
-      lines.push( Buruki[data.type]( result ) );
+      html += Buruki.toUrl[data.type]( result ) + '\n';
+      lines.push( Buruki.toUrl[data.type]( result ) );
     }
     $('#result')
       .val( lines.join('\n') )
@@ -462,48 +462,3 @@ var Generator = (function(){
 
 })();
 
-
-/**
- * Providers
- */
-
-
-var Buruki = (function(){
-
-  // oneway
-  // mow/bkk/2015-07-18/-/3/2/1/b/
-  // roundtrip
-  // mow/bkk/2015-07-18/2015-07-25/3/2/1/e/
-  // complex:
-  // MOW-BKK/2015-07-18/BKK-SGN/2015-07-21/SGN-HKG/2015-07-24/HKG-MOW/2015-07-31/3/2/1/b/
-
-  var onewayTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{date}}/-/{{adults}}/0/0/{{class}}';
-  var roundtripTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/0/0/{{class}}';
-  var complexTemplate = 'http://buruki.ru/complex/';
-
-  var oneway = function( data ){
-     return Mustache.to_html( onewayTemplate, data );
-  };
-
-  var roundtrip = function( data ){
-    return Mustache.to_html( roundtripTemplate, data );
-  };
-
-  var complex = function( data ){
-    var res = complexTemplate;
-    for (var i = 0, len = data.legs.length; i < len; i++) {
-      var leg = data.legs[i];
-      res += leg.from + '-' + leg.to + '/' + leg.date + '/';
-    }
-    res += data.adults + '/0/0/' + data.class;
-    return res;
-  };
-
-
-  return {
-    oneway: oneway,
-    roundtrip: roundtrip,
-    complex: complex
-  };
-
-})();

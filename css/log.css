@@ -58,6 +58,10 @@ td.time {
   width: 130px;
 }
 
+td.url span {
+  font-weight: bold;
+}
+
 td.price {
   text-align: center;
   width: 70px;
