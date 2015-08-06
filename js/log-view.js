@@ -89,11 +89,9 @@
 
 
   var authorNote = function( isHtml ){
-    var text;
-    if (isHtml) text = i18n('html_author_note');
-    else text = i18n('text_author_note');
+    var text = i18n('text_author_note');
     text = Mustache.to_html(text, {
-      url: 'https://chrome.google.com/webstore/detail/' + chrome.runtime.id
+      url: 'https://chrome.google.com/webstore/detail/laafmimmfoigfibljpeaohdehdnlbddg'
     });
     return text;
   };
