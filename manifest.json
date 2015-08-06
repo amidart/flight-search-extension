@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Flight Scanner",
+  "name": "FlightScanner",
   "description": "",
   "default_locale": "en",
-  "version": "0.1.0",
+  "version": "0.2.0",
 
   "icons": {
     "256": "/img/icon256.png"
