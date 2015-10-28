@@ -51,6 +51,9 @@
   "btn_save": {
     "message": "Save"
   },
+  "btn_howto": {
+    "message": "How to use extension"
+  },
   "btn_about": {
     "message": "About"
   },

@@ -51,6 +51,9 @@
   "btn_save": {
     "message": "Сохранить"
   },
+  "btn_howto": {
+    "message": "Как пользоваться расширением"
+  },
   "btn_about": {
     "message": "О расширении"
   },
