@@ -3,7 +3,7 @@
   "name": "FlightScanner",
   "description": "",
   "default_locale": "en",
-  "version": "0.2.1",
+  "version": "0.3",
 
   "icons": {
     "256": "/img/icon256.png"
@@ -47,6 +47,8 @@
   ],
 
   "permissions": [
-    "notifications"
+    "notifications",
+    "http://*/*",
+    "https://*/*"
   ]
 }
