@@ -38,9 +38,9 @@
   var processPriceItem = function( node ){
     var $node = $(node);
     var res = {};
-    res.price = parseInt( $node.find('.ticketinfo .price-total .price span:first-child').text().replace(/[ ,.]/g, '') );
+    res.price = parseInt( $node.find('.ticketinfo .price-total .price').text().replace(/[^\d]/g, '') );
     if (!res.price) {
-      res.price = parseInt( $node.find('.ticketinfo .price-pax .price span:first-child').text().replace(/[ ,.]/g, '') );
+      res.price = parseInt( $node.find('.ticketinfo .price-pax .price').text().replace(/[^\d]/g, '') );
     }
     res.airline = [];
     $node.find('.airlines .names').map(function( index, elem ){

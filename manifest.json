@@ -50,7 +50,12 @@
     },
     {
       "matches": [
-        "*://*.momondo.com/flightsearch/*"
+        "http://*/*",
+        "https://*/*"
+      ],
+      "include_globs": [
+        "https://www.momondo.*/flightsearch/*",
+        "http://www.momondo.*/flightsearch/*"
       ],
       "js": [
         "/lib/jquery-2.1.1.min.js",
