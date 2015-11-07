@@ -56,6 +56,12 @@ var TaskManager = (function(){
   };
 
 
+  var hasTab = function( tabId ){
+    if (activeTabs[tabId]) return true;
+    return false;
+  };
+
+
   var start = function(){
     state = 'running';
     for (var i = 0; i < tabs; i++) {
@@ -188,6 +194,7 @@ var TaskManager = (function(){
     stop: stop,
     resetIndex: resetIndex,
     reset: reset,
+    hasTab: hasTab,
     processResult: processResult
   };
 

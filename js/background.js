@@ -22,6 +22,9 @@ var App = (function(){
           enqueueTasks( data );
           if (typeof sendResponse === 'function') sendResponse();
         }
+        else if (cmd === 'task_manager.has_tab') {
+          sendResponse( TaskManager.hasTab( sender.tab.id ) );
+        }
         else if (cmd === 'flights') {
           TaskManager.processResult( sender.tab.id, data );
         }

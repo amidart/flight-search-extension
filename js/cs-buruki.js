@@ -1,6 +1,15 @@
 (function(){
 
   var init = function(){
+    chrome.runtime.sendMessage({cmd: 'task_manager.has_tab'}, function( response ){
+      if (response) {
+        runTimer();
+      }
+    });
+  };
+
+
+  var runTimer = function(){
     var timer = setInterval(function(){
       var searchInProgress = $('.bu-in-progress').is(':visible');
       if (!searchInProgress) {
