@@ -47,6 +47,16 @@
         "/js/cs-buruki.js"
       ],
       "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.momondo.com/flightsearch/*"
+      ],
+      "js": [
+        "/lib/jquery-2.1.1.min.js",
+        "/js/cs-momondo.js"
+      ],
+      "run_at": "document_end"
     }
   ],
 
