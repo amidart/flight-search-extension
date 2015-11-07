@@ -79,7 +79,7 @@
   var renderExtra = function( flights ){
     var res = '';
     if (!flights) return res;
-    var template = '<div>{{provider}} {{depTime}} {{depAirport}} {{flightTime}}</div>';
+    var template = '<div>{{airline}} {{depTime}} {{depAirport}} {{flightTime}}</div>';
     for (var i = 0, len = flights.length; i < len; i++) {
       var flight = flights[i];
       res += Mustache.to_html(template, flight);

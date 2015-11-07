@@ -42,11 +42,11 @@
     if (!res.price) {
       res.price = parseInt( $node.find('.ticketinfo .price-pax .price span:first-child').text().replace(/[ ,.]/g, '') );
     }
-    res.provider = [];
+    res.airline = [];
     $node.find('.airlines .names').map(function( index, elem ){
-      res.provider.push( elem.textContent );
+      res.airline.push( elem.textContent );
     });
-    res.provider = res.provider.join(' / ');
+    res.airline = res.airline.join(' / ');
     res.flightTime = [];
     $node.find('.travel-time').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );

@@ -48,7 +48,7 @@
     var res = {};
     res.price = parseInt( $node.find('.expl-ticket-main-price').text().replace(/ /g, '') );
     var airline = $node.find('.expl-main-airline-logo').attr('src');
-    res.provider = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
+    res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
     res.flightTime = [];
     $node.find('.expl-flight-segment-duration').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );

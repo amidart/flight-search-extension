@@ -40,7 +40,7 @@
     var $node = $(node);
     var res = {};
     res.price = parseInt( $node.find('.bu-main .provider .amount').text().replace(' ', '') );
-    res.provider = $node.find('.airline-logo').attr('alt');
+    res.airline = $node.find('.airline-logo').attr('alt');
     res.flightTime = [];
     $node.find('.leg-summary .flight-time .bu-time').map(function( index, elem ){
       res.flightTime.push(elem.textContent);
