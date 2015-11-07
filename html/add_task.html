@@ -18,7 +18,7 @@
     <hr/>
 
     <div id="type-selector" class="row">
-      <div class="col-xs-12 btn-group" role="group">
+      <div class="col-xs-6 btn-group" role="group">
         <a href="#" id="oneway" class="btn btn-default btn-xs switch-type" data-i18n="btn_oneway"></a>
         <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type" data-i18n="btn_roundtrip"></a>
         <a href="#" id="complex" class="btn btn-default btn-xs switch-type" data-i18n="btn_complex"></a>
@@ -73,9 +73,29 @@
       </div>
     </div>
 
-    <div class="text-center">
-      <a href="#" id="generate" class="btn btn-default" data-i18n="btn_generate"></a>
+    <div id="provider-selector" class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <select class="form-control" id="">
+          <option>aviasales.ru</option>
+          <option>buruki.ru</option>
+          <option disabled>momondo.com</option>
+          <option disabled>skyscanner.com</option>
+          <option disabled>kayak.com</option>
+        </select>
+      </div>
+      <div class="col-xs-2 checkbox form-inline">
+        <div class="checkbox">
+          <label><input type="checkbox"> Random</label>
+        </div>
+      </div>
     </div>
+
+
+    <div class="text-center row">
+      <a href="#" id="generate" class="btn btn-success" data-i18n="btn_generate"></a>
+    </div>
+
 
     <div class="row text-center">
       <div class="col-xs-12">
