@@ -119,6 +119,15 @@ var UserData = (function(){
       $('#endDate').val( end.yyyymmdd() );
     });
 
+    $('#random-provider').change(function(){
+      if (this.checked) {
+        $('#provider').attr('disabled', true);
+      }
+      else {
+        $('#provider').removeAttr('disabled');
+      }
+    });
+
     $('#generate').click(function(){
       generateTasks();
     });
@@ -187,7 +196,8 @@ var UserData = (function(){
     var lines = [];
     for (var i = 0, len = results.length; i < len; i++) {
       var result = results[i];
-      lines.push( Provider.get(data.provider).toUrl[data.type]( result ) );
+      var provider = data.randomProvider ? Provider.getRandom() : Provider.get( data.provider);
+      lines.push( provider.toUrl[data.type]( result ) );
     }
     $('#result')
       .val( lines.join('\n') )
@@ -228,7 +238,7 @@ var UserData = (function(){
       array[randomIndex] = temporaryValue;
     }
     return array;
-  }
+  };
 
 
   var getFormsData = function(){

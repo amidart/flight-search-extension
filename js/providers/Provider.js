@@ -13,6 +13,12 @@ var Provider = (function(){
   };
 
 
+  var getRandom = function(){
+    var keys = Object.keys(providers);
+    return providers[keys[ keys.length * Math.random() << 0]];
+  };
+
+
   var fromUrl = function( url ){
     for (var key in providers) {
       if ( url.indexOf( key ) !== -1 ) return providers[key].fromUrl(url);
@@ -24,6 +30,7 @@ var Provider = (function(){
   return {
     add: add,
     get: get,
+    getRandom: getRandom,
     fromUrl: fromUrl
   };
 
