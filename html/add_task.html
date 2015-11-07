@@ -73,20 +73,20 @@
       </div>
     </div>
 
-    <div id="provider-selector" class="row">
+    <div class="row">
       <div class="col-xs-4"></div>
       <div class="col-xs-4">
-        <select class="form-control" id="">
-          <option>aviasales.ru</option>
-          <option>buruki.ru</option>
-          <option disabled>momondo.com</option>
-          <option disabled>skyscanner.com</option>
-          <option disabled>kayak.com</option>
+        <select class="form-control" id="provider">
+          <option value="aviasales">aviasales.ru</option>
+          <option value="buruki">buruki.ru</option>
+          <option disabled value="momondo">momondo.com</option>
+          <option disabled value="skyscanner">skyscanner.com</option>
+          <option disabled value="kayak">kayak.com</option>
         </select>
       </div>
       <div class="col-xs-2 checkbox form-inline">
         <div class="checkbox">
-          <label><input type="checkbox"> Random</label>
+          <label><input type="checkbox" id="random-provider"> Random</label>
         </div>
       </div>
     </div>
@@ -164,7 +164,9 @@
   <script type="text/javascript" src="/js/i18n.alias.js"></script>
   <script type="text/javascript" src="/js/i18n.dom.js"></script>
   <script type="text/javascript" src="/js/Status.js"></script>
-  <script type="text/javascript" src="/js/providers/Buruki.js"></script>
+  <script type="text/javascript" src="/js/providers/Provider.js"></script>
+  <script type="text/javascript" src="/js/providers/buruki.js"></script>
+  <script type="text/javascript" src="/js/providers/aviasales.js"></script>
   <script type="text/javascript" src="/js/add_task.js"></script>
 
 </body>

@@ -184,12 +184,10 @@ var UserData = (function(){
     var data = getFormsData();
     var results = Generator[ data.type ]( data );
     console.log(results);
-    var html = '';
     var lines = [];
     for (var i = 0, len = results.length; i < len; i++) {
       var result = results[i];
-      html += Buruki.toUrl[data.type]( result ) + '\n';
-      lines.push( Buruki.toUrl[data.type]( result ) );
+      lines.push( Provider.get(data.provider).toUrl[data.type]( result ) );
     }
     $('#result')
       .val( lines.join('\n') )
@@ -254,6 +252,8 @@ var UserData = (function(){
     });
     res.class = $('#flightClass').val();
     res.adults = parseInt( $('#adults').val() );
+    res.provider = $('#provider').val();
+    res.randomProvider = $('#random-provider').is(':checked');
     res.legs = legs;
     console.log(res);
     return res;

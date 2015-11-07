@@ -1,4 +1,4 @@
-var Buruki = (function(){
+Provider.add('buruki', (function(){
 
   // oneway
   // mow/bkk/2015-07-18/-/3/2/1/b/
@@ -58,4 +58,4 @@ var Buruki = (function(){
     fromUrl: fromUrl
   };
 
-})();
+})() );
