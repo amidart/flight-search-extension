@@ -17,7 +17,7 @@ var Provider = (function(){
     for (var key in providers) {
       if ( url.indexOf( key ) !== -1 ) return providers[key].fromUrl(url);
     }
-    return 'error';
+    return url;
   };
 
 

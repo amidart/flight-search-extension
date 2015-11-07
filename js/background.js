@@ -16,6 +16,7 @@ var App = (function(){
     chrome.runtime.onMessage.addListener(
       function(request, sender, sendResponse) {
         console.log(request);
+        var tabId = sender.tab && sender.tab.id;
         var cmd = request.cmd;
         var data = request.data;
         if (cmd === 'enqueueTasks') {
@@ -23,14 +24,24 @@ var App = (function(){
           if (typeof sendResponse === 'function') sendResponse();
         }
         else if (cmd === 'task_manager.has_tab') {
-          sendResponse( TaskManager.hasTab( sender.tab.id ) );
+          sendResponse( TaskManager.hasTab( tabId ) );
         }
         else if (cmd === 'flights') {
-          TaskManager.processResult( sender.tab.id, data );
+          TaskManager.processResult( tabId, data );
         }
         else if (cmd === 'Log.getRecent') {
           var records = Log.getRecent( data.count );
           if (typeof sendResponse === 'function') sendResponse( records );
+        }
+        else if (cmd === 'set_focus') {
+          chrome.tabs.query({currentWindow: true, active: true}, function( tabs ){
+            chrome.tabs.update( tabId, {active: true} );
+            sendResponse('ok');
+            setTimeout(function(){
+              chrome.tabs.update( tabs[0].id, {active: true} );
+            }, 1000);
+          });
+          return true;
         }
       });
   };
