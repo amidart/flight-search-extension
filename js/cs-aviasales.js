@@ -12,7 +12,6 @@
   var runTimer = function(){
     var timer = setInterval(function(){
       var searchInProgress = $('.js-progress-bar-container').is(':visible');
-      console.log(searchInProgress);
       if (!searchInProgress) {
         clearInterval(timer);
         switchFocusToTab( processResults );
@@ -29,9 +28,7 @@
 
 
   var processResults = function(){
-    console.log('processing results');
     var items = $('.expl-ticket_wrapp');
-    console.log(items);
     var flights = [];
     var len = items.length;
     if (len > 1) len = 1;
@@ -39,7 +36,6 @@
       var item = items[i];
       flights.push( processPriceItem( item ) );
     }
-    console.log(flights);
     chrome.runtime.sendMessage({
       cmd: 'flights',
       data: flights
@@ -48,7 +44,6 @@
 
 
   var processPriceItem = function( node ){
-    console.log(node);
     var $node = $(node);
     var res = {};
     res.price = parseInt( $node.find('.expl-ticket-main-price').text().replace(/ /g, '') );
