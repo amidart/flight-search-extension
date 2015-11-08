@@ -172,10 +172,22 @@
     "message": "Дней (max)"
   },
   "label_adults": {
-    "message": "Взрослых"
+    "message": "Взрослые"
+  },
+  "label_children": {
+    "message": "Дети (2-12 лет)"
+  },
+  "label_infants": {
+    "message": "Младенцы (< 2 лет)"
+  },
+  "label_random": {
+    "message": "Случайный выбор"
   },
   "label_class": {
     "message": "Класс перелета"
+  },
+  "label_step": {
+    "message": "Шаг"
   },
   "label_result": {
     "message": "Результат"

@@ -176,8 +176,20 @@
   "label_adults": {
     "message": "Adults"
   },
+  "label_children": {
+    "message": "Children (2-12 yrs)"
+  },
+  "label_infants": {
+    "message": "Infants (0-2 yrs)"
+  },
+  "label_random": {
+    "message": "Random"
+  },
   "label_class": {
     "message": "Class"
+  },
+  "label_step": {
+    "message": "Step"
   },
   "label_result": {
     "message": "Result"

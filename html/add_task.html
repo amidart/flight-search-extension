@@ -17,8 +17,17 @@
 
     <hr/>
 
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <h3>
+          <span data-i18n="label_step"></span> 1
+          <span id="result-count"></span>
+        </h3>
+      </div>
+    </div>
+
     <div id="type-selector" class="row">
-      <div class="col-xs-6 btn-group" role="group">
+      <div class="col-xs-12 btn-group" role="group">
         <a href="#" id="oneway" class="btn btn-default btn-xs switch-type" data-i18n="btn_oneway"></a>
         <a href="#" id="roundtrip" class="btn btn-default btn-xs switch-type" data-i18n="btn_roundtrip"></a>
         <a href="#" id="complex" class="btn btn-default btn-xs switch-type" data-i18n="btn_complex"></a>
@@ -59,16 +68,24 @@
 
     <div class="prefs-container">
       <div class="row">
-        <div class="form-group col-xs-2">
-          <label data-i18n="label_adults"></label>
-          <input type="number" id="adults" class="form-control" value="1">
-        </div>
         <div class="form-group col-xs-3">
           <label data-i18n="label_class"></label>
           <select class="form-control" id="flightClass">
             <option value="e" selected data-i18n="val_economy"></option>
             <option value="b" data-i18n="val_business"></option>
           </select>
+        </div>
+        <div class="form-group col-xs-3">
+          <label data-i18n="label_adults"></label>
+          <input type="number" id="adults" class="form-control" value="1">
+        </div>
+        <div class="form-group col-xs-3">
+          <label data-i18n="label_children"></label>
+          <input type="number" id="children" class="form-control" value="0">
+        </div>
+        <div class="form-group col-xs-3">
+          <label data-i18n="label_infants"></label>
+          <input type="number" id="infants" class="form-control" value="0">
         </div>
       </div>
     </div>
@@ -80,13 +97,12 @@
           <option value="aviasales">aviasales.ru</option>
           <option value="buruki">buruki.ru</option>
           <option value="momondo">momondo.com</option>
-          <!-- TODO: <option value="skyscanner">skyscanner.com</option> -->
-          <!-- TODO: <option value="kayak">kayak.com</option> -->
         </select>
       </div>
-      <div class="col-xs-2 checkbox form-inline">
+      <div class="col-xs-4 checkbox form-inline">
         <div class="checkbox">
-          <label><input type="checkbox" id="random-provider"> Random</label>
+          <input type="checkbox" id="random-provider">
+          <label data-i18n="label_random" for="random-provider"></label>
         </div>
       </div>
     </div>
@@ -100,7 +116,7 @@
     <div class="row text-center">
       <div class="col-xs-12">
         <h3>
-          <span data-i18n="label_result"></span>
+          <span data-i18n="label_step"></span> 2
           <span id="result-count"></span>
         </h3>
         <textarea id="result" class="form-control" rows="10"></textarea>

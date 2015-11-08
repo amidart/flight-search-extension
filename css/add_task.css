@@ -6,6 +6,10 @@ hr {
   margin: 10px 0;
 }
 
+h3 {
+  margin-top: 10px;
+}
+
 .container {
   width: 600px;
 }
