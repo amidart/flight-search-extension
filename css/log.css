@@ -60,6 +60,12 @@ td.time {
 
 td.url span {
   font-weight: bold;
+  font-size: 13px;
+}
+
+td.url i {
+  margin-left: 20px;
+  font-size: 10px;
 }
 
 td.price {

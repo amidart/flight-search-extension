@@ -10,8 +10,8 @@ Provider.add('buruki', (function(){
   var fromUrl = {};
   var toUrl = {};
 
-  var onewayTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{date}}/-/{{adults}}/0/0/{{class}}';
-  var roundtripTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/0/0/{{class}}';
+  var onewayTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{date}}/-/{{adults}}/{{children}}/{{infants}}/{{class}}';
+  var roundtripTemplate = 'http://buruki.ru/search/{{from}}/{{to}}/{{dateOut}}/{{dateBack}}/{{adults}}/{{children}}/{{infants}}/{{class}}';
   var complexTemplate = 'http://buruki.ru/complex/';
 
 
@@ -29,16 +29,19 @@ Provider.add('buruki', (function(){
       var leg = data.legs[i];
       res += leg.from + '-' + leg.to + '/' + leg.date + '/';
     }
-    res += data.adults + '/0/0/' + data.class;
+    res += [data.adults, data.children, data.infants, data.class].join('/');
     return res;
   };
 
 
   fromUrl = function( url ){
     var res = url.replace(/^.*(search|complex)\//, '');
-    res = res.replace(/\/\d\/\d\/\d\/[be]$/, '');
     res = res.replace(/\//g, ' ');
-    res = res.replace(/\s+-$/, '');
+    res = res.replace(/ (\d) (\d) (\d) [be]$/, function(m, p1, p2, p3){
+      if (p1 === '1' && p2 === '0' && p3 === '0') return '';
+      else return '<i>' + [p1,p2,p3].join('+') + '</i>';
+    });
+    res = res.replace(/\s+-/g, '');
     res = res.replace(/([A-Z]) ([A-Z])/g, '$1-$2');
     res = res.replace(/ /g, ', ');
     res = res.replace(/(\d+-\d+-\d+)/g, function(match){

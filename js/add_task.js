@@ -262,6 +262,8 @@ var UserData = (function(){
     });
     res.class = $('#flightClass').val();
     res.adults = parseInt( $('#adults').val() );
+    res.children = parseInt( $('#children').val() );
+    res.infants = parseInt( $('#infants').val() );
     res.provider = $('#provider').val();
     res.randomProvider = $('#random-provider').is(':checked');
     res.legs = legs;
@@ -337,6 +339,8 @@ var Generator = (function(){
         to: data.legs[0].to,
         date: start.yyyymmdd(),
         adults: data.adults,
+        children: data.children,
+        infants: data.infants,
         class: data.class
       });
       var newDate = start.setDate(start.getDate() + 1);
@@ -358,6 +362,8 @@ var Generator = (function(){
           dateOut: start.yyyymmdd(),
           dateBack: getDate( start, i).yyyymmdd(),
           adults: data.adults,
+          children: data.children,
+          infants: data.infants,
           class: data.class
         });
       }
@@ -382,6 +388,8 @@ var Generator = (function(){
         res.push({
           legs: legs,
           adults: data.adults,
+          children: data.children,
+          infants: data.infants,
           class: data.class
         });
       }

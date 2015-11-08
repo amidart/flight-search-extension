@@ -58,7 +58,15 @@ Provider.add('aviasales', (function(){
   fromUrl = function( url ){
     var res = url.replace(/^.*search.aviasales.ru\//, '');
     // remove class and passengers
-    res = res.replace(/(\d{4}|[A-Z]{3})b?\d{1,3}?$/g, '$1');
+    var passengersStr = '';
+    console.log(res);
+    res = res.replace(/(\d{4}|[A-Z]{3})b?(\d{1,3}?)$/, function(match, p1, p2){
+      if (p2 === '1') return p1;
+      else if (p2.length === 1) p2 += '00';
+      passengersStr = ' <i>' + p2.split('').join('+') + '</i>';
+      return p1;
+    });
+    console.log(res);
     // replace 1911MOW2011 => 1911MOW-MOW2011
     res = res.replace(/(\d{4})([A-Z]+)(\d{4})/g, '$1$2-$2$3');
     // if first city and last city are the same aviasales don't put it to the end
@@ -72,6 +80,7 @@ Provider.add('aviasales', (function(){
       var m = match.substr(2,2);
       return '<span>' + d + '.' + m + '</span>';
     });
+    res += passengersStr;
     return res;
   };
 
@@ -88,8 +97,10 @@ Provider.add('aviasales', (function(){
     var res = '';
     if (data.class === 'b') res = 'b';
     res += data.adults;
-    if (res.children) res += data.children;
-    if (res.infants) res += data.infants;
+    if (data.children + data.infants !== 0) {
+      res += data.children;
+      if (data.infants) res += data.infants;
+    }
     return res;
   };
 

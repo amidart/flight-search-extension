@@ -17,8 +17,8 @@ Provider.add('momondo', (function(){
   var fromUrl = {};
   var toUrl = {};
 
-  var onewayTemplate = 'http://www.momondo.com/flightsearch/?Search=true&TripType=1&SegNo=1&SO0={{from}}&SD0={{to}}&SDP0={{date}}&AD={{adults}}&TK={{class}}&DO=false&NA=false';
-  var roundtripTemplate = 'http://www.momondo.com/flightsearch/?Search=true&TripType=2&SegNo=2&SO0={{from}}&SD0={{to}}&SDP0={{dateOut}}&SO1={{to}}&SD1={{from}}&SDP1={{dateBack}}&AD={{adults}}&TK={{class}}&DO=false&NA=false';
+  var onewayTemplate = 'http://www.momondo.com/flightsearch/?Search=true&TripType=1&SegNo=1&SO0={{from}}&SD0={{to}}&SDP0={{date}}&AD={{adults}}&CA={{ca}}&TK={{class}}&DO=false&NA=false';
+  var roundtripTemplate = 'http://www.momondo.com/flightsearch/?Search=true&TripType=2&SegNo=2&SO0={{from}}&SD0={{to}}&SDP0={{dateOut}}&SO1={{to}}&SD1={{from}}&SDP1={{dateBack}}&AD={{adults}}&CA={{ca}}&TK={{class}}&DO=false&NA=false';
   var complexTemplate = 'http://www.momondo.com/flightsearch/?Search=true&TripType=4';
 
 
@@ -26,6 +26,7 @@ Provider.add('momondo', (function(){
     var tmplData = $.extend({}, data);
     tmplData.date = convertDate( data.date );
     tmplData.class = getClass( data.class );
+    tmplData.ca = getChildrenAges( data );
     return Mustache.to_html( onewayTemplate, tmplData );
   };
 
@@ -35,6 +36,7 @@ Provider.add('momondo', (function(){
     tmplData.dateOut = convertDate( data.dateOut );
     tmplData.dateBack = convertDate( data.dateBack );
     tmplData.class = getClass( data.class );
+    tmplData.ca = getChildrenAges( data );
     return Mustache.to_html( roundtripTemplate, tmplData );
   };
 
@@ -48,6 +50,7 @@ Provider.add('momondo', (function(){
       res += '&SDP' + i + '=' + convertDate( leg.date );
     }
     res += '&AD=' + data.adults;
+    res += '&CA=' + getChildrenAges(data);
     res += '&TK=' + getClass( data.class );
     res += '&DO=false&NA=false';
     return res;
@@ -57,8 +60,9 @@ Provider.add('momondo', (function(){
 
   fromUrl = function( url ){
     var res = url.replace(/^.*SegNo=\d+(.*)/, '$1');
-    res = res.replace(/&AD=.*$/, '');
+    res = res.replace(/&TK=.*$/, '');
     res = res.replace(/&\w+=/g, ' ');
+    res = convertPassengers(res);
     res = res.replace(/([A-Z]+)\s+([A-Z]+)/g, '$1-$2');
     res = $.trim(res);
     res = res.replace(/ /g, ', ');
@@ -78,6 +82,40 @@ Provider.add('momondo', (function(){
   var getClass = function( classLetter ){
     return classLetter === 'b' ? 'BIZ' : 'ECO';
   };
+
+
+  var getChildrenAges = function( data ){
+    // I don't have ages in interface, so assume it as
+    // child = 7, infant = 1
+    if (!data.children && !data.infants) return '';
+    var res = Array( data.children + 1 ).join('7,');
+    res += Array( data.infants + 1 ).join('1,');
+    return res.substr(0, res.length - 1);
+  };
+
+
+  /**
+   * MOW BKK 22-11-2015 BKK MOW 28-11-2015 3 7,7,1
+   * to
+   * MOW BKK 22-11-2015 BKK MOW 28-11-2015 <i>3+2+1</i>
+   */
+  var convertPassengers = function( str ){
+    var res = str.replace(/ (\d)\s?([\d,]+)?$/, function( match, p1, p2 ){
+      var ages = (p2 || '').split(',');
+      var adults = parseInt(p1);
+      var children = 0;
+      var infants = 0;
+      for (var i = 0, len = ages.length; i < len; i++) {
+        var age = ages[i];
+        if (age >= 2) children++;
+        else if (age > 0 && age < 2) infants++;
+      }
+      if (adults === 1 && children === 0 && infants === 0) return '';
+      return '<i>' + [adults, children, infants].join('+') + '</i>';
+    });
+    return res;
+  };
+
 
   return {
     toUrl: toUrl,
