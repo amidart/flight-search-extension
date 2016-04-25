@@ -69,7 +69,16 @@
       html += Mustache.to_html( $('#recordTemplate').html(), data );
     }
     $('#log tbody').html(html);
-    $('#log').stupidtable();
+    $('#log').stupidtable({
+      custom: function(a,b){
+        console.log(a,b);
+        a = $.trim(a);
+        b = $.trim(b);
+        if ( typeof a === 'undefined' || !a.match(/^\d+$/)) return 1;
+        if ( typeof b === 'undefined' || !b.match(/^\d+$/)) return -1;
+        return parseFloat(a) - parseFloat(b);
+      }
+    });
     $('[data-toggle="tooltip"]').tooltip({
       container: 'body'
     });
