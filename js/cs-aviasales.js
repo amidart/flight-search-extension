@@ -11,7 +11,7 @@
 
   var runTimer = function(){
     var timer = setInterval(function(){
-      var searchInProgress = $('.js-progress-bar-container').is(':visible');
+      var searchInProgress = $('.countdown').is(':visible');
       if (!searchInProgress) {
         clearInterval(timer);
         switchFocusToTab( processResults );
@@ -28,7 +28,7 @@
 
 
   var processResults = function(){
-    var items = $('.expl-ticket_wrapp');
+    var items = $('div.ticket-new');
     var flights = [];
     var len = items.length;
     if (len > 1) len = 1;
@@ -46,16 +46,17 @@
   var processPriceItem = function( node ){
     var $node = $(node);
     var res = {};
-    res.price = parseInt( $node.find('.expl-ticket-main-price').text().replace(/ /g, '') );
-    var airline = $node.find('.expl-main-airline-logo').attr('src');
-    res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
+    res.price = parseInt( $node.find('.ticket-new__buy-price-num').text().replace(/[^\d]/g, '') );
+    var airline = $node.find('img.ticket-new__airline-logo').attr('src');
+    if (!airline) airline = $node.find('.ticket-new__airline-logo img').attr('src');
+    if (airline) res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
     res.flightTime = [];
-    $node.find('.expl-flight-segment-duration').map(function( index, elem ){
+    $node.find('.fly-segment__total-time').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );
     });
     res.flightTime = res.flightTime.join(' / ');
-    res.depTime = $node.find('.expl-depart-time')[0].textContent;
-    res.depAirport = $node.find('.expl-departure-port')[0].textContent.replace(/[^A-Z0-9]/g, '');
+    res.depTime = $node.find('.fly-segment__time')[0].textContent;
+    res.depAirport = $node.find('.fly-segment__path-iata')[0].textContent.replace(/[^A-Z0-9]/g, '');
     return res;
   };
 
