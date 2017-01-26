@@ -28,7 +28,7 @@
 
 
   var processResults = function(){
-    var items = $('div.ticket-new');
+    var items = $('div.ticket');
     var flights = [];
     var len = items.length;
     if (len > 1) len = 1;
@@ -46,9 +46,9 @@
   var processPriceItem = function( node ){
     var $node = $(node);
     var res = {};
-    res.price = parseInt( $node.find('.ticket-new__buy-price-num').text().replace(/[^\d]/g, '') );
-    var airline = $node.find('img.ticket-new__airline-logo').attr('src');
-    if (!airline) airline = $node.find('.ticket-new__airline-logo img').attr('src');
+    res.price = parseInt( $node.find('.ticket__buy-price-num').text().replace(/[^\d]/g, '') );
+    var airline = $node.find('img.ticket__airline-logo').attr('src');
+    if (!airline) airline = $node.find('.ticket__airline-logo img').attr('src');
     if (airline) res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
     res.flightTime = [];
     $node.find('.fly-segment__total-time').map(function( index, elem ){
