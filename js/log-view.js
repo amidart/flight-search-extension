@@ -71,7 +71,6 @@
     $('#log tbody').html(html);
     $('#log').stupidtable({
       custom: function(a,b){
-        console.log(a,b);
         a = $.trim(a);
         b = $.trim(b);
         if ( typeof a === 'undefined' || !a.match(/^\d+$/)) return 1;
