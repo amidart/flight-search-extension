@@ -148,6 +148,7 @@ var UserData = (function(){
 
     $('#enqueue-btn').click(function(){
       var price = parseInt( $('#targetPrice').val() );
+      if (!price) price = 0;
       validateResults(
         function(){
           console.log('enqueue');
@@ -274,9 +275,9 @@ var UserData = (function(){
 
   var validateResults = function( onSuccess, onError ){
     var errors = [];
-    if ( !parseInt($('#targetPrice').val()) ) {
-      errors.push( _('error_price_empty') );
-    }
+    // if ( !parseInt($('#targetPrice').val()) ) {
+    //   errors.push( _('error_price_empty') );
+    // }
     if ( !$('#result').val() ) {
       errors.push( _('error_tasks_empty') );
     }

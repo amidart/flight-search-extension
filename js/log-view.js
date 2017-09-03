@@ -61,7 +61,7 @@
         time: moment(time).format('YYYY-MM-DD HH:mm:ss'),
         url: record.data.url,
         params: Provider.fromUrl( record.data.url ),
-        targetPrice: record.data.targetPrice,
+        targetPrice: record.data.targetPrice || '',
         error: !!error,
         result: !!error ? '' : record.data.price,
         extra: renderExtra( record.data.extra )
