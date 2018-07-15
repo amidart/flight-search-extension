@@ -55,13 +55,15 @@
       var record = records[i];
       var time = new Date(record.timestamp);
       var error = record.data.error;
+      var targetPrice = record.data.targetPrice;
+      if (targetPrice < 0) targetPrice = '';
       var rowClassName = error ? 'bg-warning' : (record.data.success? 'bg-success' : '');
       var data = {
         rowClassName: rowClassName,
         time: moment(time).format('YYYY-MM-DD HH:mm:ss'),
         url: record.data.url,
         params: Provider.fromUrl( record.data.url ),
-        targetPrice: record.data.targetPrice,
+        targetPrice: targetPrice,
         error: !!error,
         result: !!error ? '' : record.data.price,
         extra: renderExtra( record.data.extra )
