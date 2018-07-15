@@ -54,8 +54,8 @@
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );
     });
     res.flightTime = res.flightTime.join(' / ');
-    res.depTime = ($node.find('.segment-route__time')[0] || {}).textContent;
-    res.depAirport = ($node.find('.segment-route__path-iata')[0] || {}).textContent.replace(/[^A-Z0-9]/g, '');
+    res.depTime = $($node.find('.segment-route__time')[0]).text();
+    res.depAirport = $($node.find('.segment-route__path-iata')[0]).text().replace(/[^A-Z0-9]/g, '');
     return res;
   };
 
