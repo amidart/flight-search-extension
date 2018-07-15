@@ -46,17 +46,16 @@
   var processPriceItem = function( node ){
     var $node = $(node);
     var res = {};
-    res.price = parseInt( $node.find('.ticket__buy-price-num').text().replace(/[^\d]/g, '') );
-    var airline = $node.find('img.ticket__airline-logo').attr('src');
-    if (!airline) airline = $node.find('.ticket__airline-logo img').attr('src');
+    res.price = parseInt( $node.find('.buy-button__price-num').text().replace(/[^\d]/g, '') );
+    var airline = $node.find('.airline-logos__logo img').attr('src');
     if (airline) res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
     res.flightTime = [];
-    $node.find('.fly-segment__total-time').map(function( index, elem ){
+    $node.find('.segment-route__total-time').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );
     });
     res.flightTime = res.flightTime.join(' / ');
-    res.depTime = $node.find('.fly-segment__time')[0].textContent;
-    res.depAirport = $node.find('.fly-segment__path-iata')[0].textContent.replace(/[^A-Z0-9]/g, '');
+    res.depTime = ($node.find('.segment-route__time')[0] || {}).textContent;
+    res.depAirport = ($node.find('.segment-route__path-iata')[0] || {}).textContent.replace(/[^A-Z0-9]/g, '');
     return res;
   };
 
