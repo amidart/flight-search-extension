@@ -30,7 +30,12 @@
   "content_scripts": [
     {
       "matches": [
-        "*://search.aviasales.ru/*"
+        "*://search.aviasales.ru/*",
+        "*://www.aviasales.ru/search/*",
+        "*://search.aviasales.kz/*",
+        "*://www.aviasales.kz/search/*",
+        "*://search.aviasales.com/*",
+        "*://www.aviasales.com/search/*"
       ],
       "js": [
         "/lib/jquery-2.1.1.min.js",
@@ -50,12 +55,41 @@
     },
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "include_globs": [
-        "https://www.momondo.*/flightsearch/*",
-        "http://www.momondo.*/flightsearch/*"
+        "*://*.momondo.com/flight-search/*",
+        "*://*.momondo.co.uk/flight-search/*",
+        "*://*.momondo.ca/flight-search/*",
+        "*://*.momondo.com.au/flight-search/*",
+        "*://*.momondo.ie/flight-search/*",
+        "*://*.momondo.de/flight-search/*",
+        "*://*.momondo.fr/flight-search/*",
+        "*://*.momondo.nl/flight-search/*",
+        "*://*.momondo.dk/flight-search/*",
+        "*://*.momondo.se/flight-search/*",
+        "*://*.momondo.fi/flight-search/*",
+        "*://*.momondo.no/flight-search/*",
+        "*://*.momondo.it/flight-search/*",
+        "*://*.momondo.es/flight-search/*",
+        "*://*.momondo.mx/flight-search/*",
+        "*://*.momondo.at/flight-search/*",
+        "*://*.momondo.ch/flight-search/*",
+        "*://*.momondo.be/flight-search/*",
+        "*://*.momondo.ee/flight-search/*",
+        "*://*.momondo.pl/flight-search/*",
+        "*://*.momondo.co.nz/flight-search/*",
+        "*://*.momondo.co.za/flight-search/*",
+        "*://*.momondo.pt/flight-search/*",
+        "*://*.momondo.com.br/flight-search/*",
+        "*://*.momondo.ro/flight-search/*",
+        "*://*.momondo.ru /flight-search/*",
+        "*://*.momondo.ua/flight-search/*",
+        "*://*.momondo.by/flight-search/*",
+        "*://*.momondo.com.cn/flight-search/*",
+        "*://*.momondo.com.tr/flight-search/*",
+        "*://*.momondo.cz/flight-search/*",
+        "*://*.momondo.kz/flight-search/*",
+        "*://*.momondo.hk/flight-search/*",
+        "*://*.momondo.in/flight-search/*",
+        "*://*.momondo.tw/flight-search/*"
       ],
       "js": [
         "/lib/jquery-2.1.1.min.js",
@@ -73,7 +107,44 @@
 
   "permissions": [
     "notifications",
-    "http://*/*",
-    "https://*/*"
+    "*://*.aviasales.ru/*",
+    "*://*.aviasales.kz/*",
+    "*://*.aviasales.com/*",
+    "*://*.buruki.ru/*",
+    "*://*.momondo.com/*",
+    "*://*.momondo.co.uk/*",
+    "*://*.momondo.ca/*",
+    "*://*.momondo.com.au/*",
+    "*://*.momondo.ie/*",
+    "*://*.momondo.de/*",
+    "*://*.momondo.fr/*",
+    "*://*.momondo.nl/*",
+    "*://*.momondo.dk/*",
+    "*://*.momondo.se/*",
+    "*://*.momondo.fi/*",
+    "*://*.momondo.no/*",
+    "*://*.momondo.it/*",
+    "*://*.momondo.es/*",
+    "*://*.momondo.mx/*",
+    "*://*.momondo.at/*",
+    "*://*.momondo.ch/*",
+    "*://*.momondo.be/*",
+    "*://*.momondo.ee/*",
+    "*://*.momondo.pl/*",
+    "*://*.momondo.co.nz/*",
+    "*://*.momondo.co.za/*",
+    "*://*.momondo.pt/*",
+    "*://*.momondo.com.br/*",
+    "*://*.momondo.ro/*",
+    "*://*.momondo.ru /*",
+    "*://*.momondo.ua/*",
+    "*://*.momondo.by/*",
+    "*://*.momondo.com.cn/*",
+    "*://*.momondo.com.tr/*",
+    "*://*.momondo.cz/*",
+    "*://*.momondo.kz/*",
+    "*://*.momondo.hk/*",
+    "*://*.momondo.in/*",
+    "*://*.momondo.tw/*"
   ]
 }
