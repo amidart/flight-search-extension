@@ -21,7 +21,7 @@
 
 
   var processResults = function(){
-    var items = $('[data-resultid]');
+    var items = $('.Flights-Results-FlightResultItem');
     var flights = [];
     var len = items.length;
     if (len > 1) len = 1;
@@ -40,7 +40,7 @@
   var processPriceItem = function( node ){
     var $node = $(node);
     var res = {};
-    res.price = parseInt( $node.find('.Flights-Results-FlightPriceSection .price-total').text().replace(/[^\d]/g, '') );
+    res.price = parseInt( $node.find('.Flights-Results-FlightPriceSection .display-price').text().replace(/[^\d]/g, '') );
     if (!res.price) {
       res.price = parseInt( $node.find('.Flights-Results-FlightPriceSection .price').text().replace(/[^\d]/g, '') );
     }
@@ -52,12 +52,12 @@
     });
     res.airline = res.airline.join(' / ');
     res.flightTime = [];
-    $node.find('.duration').map(function( index, elem ){
+    $node.find('.duration .top').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );
     });
     res.flightTime = res.flightTime.join(' / ');
-    res.depTime = $node.find('.departure-time')[0].textContent;
-    res.depAirport = ($node.find('.time.depart span')[0] || {}).textContent;
+    res.depTime = ($node.find('.depart-time')[0] || {}).textContent;
+    res.depAirport = ($node.find('.duration .bottom span')[0] || {}).textContent;
     return res;
   };
 
