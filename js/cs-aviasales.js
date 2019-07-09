@@ -11,8 +11,10 @@
 
   var runTimer = function(){
     var timer = setInterval(function(){
-      var searchInProgress = $('.countdown').is(':visible');
-      if (!searchInProgress) {
+      var $bar = $('.loader__bar');
+      if (!$bar[0]) return;
+      var searchFinished = $bar.hasClass('--animation-finished');
+      if (searchFinished) {
         clearInterval(timer);
         switchFocusToTab( processResults );
       }
@@ -28,7 +30,7 @@
 
 
   var processResults = function(){
-    var items = $('div.ticket');
+    var items = $('div.ticket-desktop');
     var flights = [];
     var len = items.length;
     if (len > 1) len = 1;
@@ -50,12 +52,12 @@
     var airline = $node.find('.airline-logos__logo img').attr('src');
     if (airline) res.airline = airline.replace(/.*\/([\w]+)(@2x)?\.png$/, '$1');
     res.flightTime = [];
-    $node.find('.segment-route__total-time').map(function( index, elem ){
+    $node.find('.segment-route__duration').map(function( index, elem ){
       res.flightTime.push( elem.textContent.replace(/.*?(\d+. \d+.).*/, '$1') );
     });
     res.flightTime = res.flightTime.join(' / ');
     res.depTime = $($node.find('.segment-route__time')[0]).text();
-    res.depAirport = $($node.find('.segment-route__path-iata')[0]).text().replace(/[^A-Z0-9]/g, '');
+    res.depAirport = $($node.find('.segment-route__path-endpoint.--departure .segment-route__path-endpoint-iata')[0]).text().replace(/[^A-Z0-9]/g, '');
     return res;
   };
 
